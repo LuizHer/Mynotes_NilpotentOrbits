@@ -1,0 +1,7 @@
+\contentsline {chapter}{\numberline {1}Kac - Moody algebras and its representations}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Kac - Moody algebras}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Main definitions}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Invariant bilinear form}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Weyl group of a Kac - Moody algebra}{7}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Affine Lie algebras}{11}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}The Kac character formula}{19}{subsection.1.1.5}%

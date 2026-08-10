@@ -1,0 +1,48 @@
+% QUALITY OF LIFE NOTATION
+\newcommand{\TODO}{$\color{red}\text{TODO:}\color{black}$ }
+\newcommand{\DONEBUT}{$\color{orange}\text{DONE BUT:}\color{black}$ }
+\newcommand{\fr}[1]{\mathfrak{#1}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\barx}{\bar{x}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\pr}{\prime}
+
+% Linear algebra commands (\det \Im already exists !)
+\newcommand{\Proj}{\text{Proj}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Ker}{\text{Ker}}
+\newcommand{\End}{\text{End}}
+
+%Lie algebra commands
+\newcommand{\ad}{\text{ad}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Sym}{\text{Sym}}
+\newcommand{\ch}{\text{ch}}
+\newcommand{\calpha}{\alpha^{\vee}}
+\newcommand{\oomega}{\overline{\omega}}
+%Lie groups commands
+\newcommand{\Ad}{\text{Ad}}
+
+%Cohomology commands
+\newcommand{\Ext}{\text{Ext}}
+
+%===== WIDE HAT =====%
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\bighat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+%\parskip 1ex
+%====================%

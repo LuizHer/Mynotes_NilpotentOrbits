@@ -1,0 +1,1435 @@
+\chapter{Symplectic geometry}
+
+\section{Symplectic manifolds}
+\subsection{Lie derivatives}
+
+Some notation that will be used in this subsection:
+\begin{center}
+    \begin{tabular}{|c|}
+        \hline 
+        $\Gamma(E)=\Gamma(M,E)$\\
+        \hline 
+        $\fr{X}(M)=\Gamma(TM)$\\
+        \hline 
+        $\Omega^k(M)=\Gamma(\bigwedge^kT^*M)$\\
+        \hline 
+        $\Omega^\bullet(M)=\bigoplus_{k\geq0}\Omega^k(M)$\\
+        \hline
+    \end{tabular}
+\end{center}
+Here $E\to M$ is a vecto bundle over $M$.
+\begin{dang}
+    \begin{definition}
+        Let $\pi:E\to M$ be a smooth vector bundle over $M$. Suppose that we have a family of sections 
+        \begin{equation}
+        \{s_t\}_{t\in I} =  (I\subset\bbR\to \Gamma(M,E):t\mapsto s_t).
+        \end{equation}
+        We say that $\{s_t\}_{t\in I}$ is smooth if for any $p\in M$, there exist a trivialization 
+        $\varphi_U:U\ni p\to U\times\bbR^r$ such that  
+        \begin{equation}
+            \varphi_U\circ s_t\big|_U=(\mathds{1}_U, a_U(t,\cdot)),\;a_U:I\times U\overset{C^\infty}{\rightarrow}\bbR^r.
+        \end{equation}
+    \end{definition}
+\end{dang}
+Of course, this definition does not deppend on the choice of trivialization: If $\varphi_V$ is another trivialization, then 
+$a_V(t,\cdot)=g_{VU}a_U(t,\cdot)$, where $\varphi_V\circ\varphi_U^{-1}(p,v)=(p,g_{VU}(p)v)$. Remember that 
+$g_{VU}:U\cap V\to GL_r(\bbR)$ is a smooth function. This definition also works for limits. Let $\{s_t\}$ be a 
+family of sections of $E$, then we say that $\lim_{t\to t_0}s_t$ exists if $\lim_{t\to t_0}a_U(t,p)$ exists for \textit{all} $p \in U$. 
+In this case, we set for $p\in U$
+\begin{equation}
+    \lim_{t\to t_0}s_t\big|_p=\varphi_U^{-1}(p,\lim_{t\to t_0}a_U(t,p)) \in E.
+\end{equation}
+Again, this definition does not deppend on the choice of trivialization. In fact 
+\begin{equation}
+    \begin{split}
+        \varphi_V(\lim_{t\to t_0}s_t\big|_p)&=\varphi_V\varphi_U^{-1}(p,\lim_{t\to t_0}a_U(t,p))\\
+        &=(p,g_{VU}(p)\cdot\lim_{t\to t_0}a_U(t,p))\\
+        &=(p,\lim_{t\to t_0}g_{VU}(p)a_U(t,p))\;(g_{VU}(p)\text{ is linear})\\
+        &=(p,\lim_{t\to t_0} a_V(t,p)).
+    \end{split}
+\end{equation}
+The same work for derivatives. For a smooth family $\{s_t\}$ we define 
+\begin{equation}
+    (\frac{d}{dt}\bigg|_{t=t_0}s_t)_p=\varphi_U^{-1}(p,\frac{\partial}{\partial t}\bigg|_{t=t_0}a_U(t,p))\in E.
+\end{equation}
+Since linear maps commute with derivatives, by the same calculation made before, we get the nondependence on 
+the choice of trivialization.
+
+\begin{dang}
+    \begin{remark}
+    Since trivialization map are linear maps on the fibers, we have the following relation between limits and derivatives of 
+    sections:
+    \begin{equation}
+        \frac{d}{dt}\bigg|_{t=t_0}s_t=\underset{t\to t_0}{\lim}\frac{s_t-s_{t_0}}{t-t_0}.
+    \end{equation}
+\end{remark}
+\end{dang}
+
+If $\{s_t\}_{t\in[0,1]}$ is a smooth familly of sections of a vector bundle $E$, then we also can define its integral 
+$\int_0^1s_tdt \in\Gamma(E)$. Let $(U,\varphi_U)$ be a local trivialization of $E$. If $\varphi_U\circ s_t=(\mathds{1}_U,a_U(t,\cdot))$, then we let 
+\begin{equation}
+    \int_0^1s_tdt\bigg|_p = \varphi_U^{-1}(p,\int_0^1a_U(t,p)dt),\;\forall p\in U.
+\end{equation}
+This is well defined because integral of vectors commutes with linear maps, so this definition does not deppend 
+on the choice of trivializations. It's clear from this definition that we have 
+\begin{equation}
+    \int_0^1(\frac{d}{dt}s_t)dt\bigg|_p = s_1(p)-s_0(p),\;\forall p\in M.
+\end{equation}
+In the case of differential forms, we have good properties. For example, if $\alpha_t,\beta_t\in\Omega^\bullet(M)$, then 
+\begin{equation}
+    \begin{aligned}
+        &\frac{d}{dt}\alpha_t\wedge\beta_t =(\frac{d}{dt}\alpha_t)\wedge\beta_t+\alpha_t\wedge(\frac{d}{dt}\beta_t),\\
+        &(d\circ \frac{d}{dt})\alpha_t=(\frac{d}{dt}\circ d)\alpha_t,\\
+        &\frac{d}{dt}F^*(\alpha_t)=F^*(\frac{d}{dt}\alpha_t)\quad(\text{comutes with pullback}).
+    \end{aligned}
+\end{equation}
+\begin{remark}
+    In the previous equations we mean: 
+    \begin{equation}
+        \frac{d}{dt}\alpha_t = \frac{d}{ds}\bigg|_{s=t}\alpha_s.
+    \end{equation}
+\end{remark}
+
+
+To define Lie derivatives we need to remember the definition of flows of vector fields.
+\begin{dang}
+    \begin{theorem}
+        Let $X\in \fr{X}(M)$ be a smooth vector field on $M$. Then for any $p\in M$, there exist a 
+        neighborhood $U\ni p$ and a smooth map called \text{flow} of the vector field $X$, given by 
+        \begin{equation}
+            \varphi: I\times U\rightarrow M
+        \end{equation}
+        satisfying
+        \begin{equation}
+            \frac{\partial}{\partial t}\varphi_t(q)=X_{\varphi_t(q)},\text{ and }\varphi_0=\mathds{1}_U.
+        \end{equation}
+    \end{theorem}
+\end{dang}
+So $t\mapsto \varphi_t(q)$ is an integral curve for $X$ with initial point $q$. By uniqueness of integral curves, we can see 
+that $\varphi_{t+s}=\varphi_t\circ\varphi_s$ whenever this equation makes sense. So, in particular 
+$\varphi_{t^{-1}}=(\varphi_{t})^{-1}$. That is $\varphi_t$ is a diffeomorphism onto its image. With this theorem/definition we 
+already can define Lie derivatives.
+
+\begin{dang}
+    \begin{definition}
+        (Lie derivatives). Let $X,Y\in\fr{X}(M),\Omega\in\Omega^k(M),p\in M$ 
+        and $\varphi$ a local flow of $X$ defined in some neighborhood of $p$. We set 
+        \begin{equation}
+            \begin{aligned}
+                &\text{(Vector fields) }\mathcal{L}_X(Y)_p=\frac{d}{dt}\bigg|_{t=0}(\varphi_{-t*}Y)_p\\
+                &\text{(Differential forms) }\mathcal{L}_X(\omega)=\frac{d}{dt}\bigg|_{t=0}(\varphi_t^*\omega)_p.
+            \end{aligned}
+        \end{equation}
+    \end{definition}
+\end{dang}
+A fundamental calculation shows that $\mathcal{L}_X(Y)=[X,Y]$ and if $f\in\Omega^0(M)=C^\infty(M)$, then 
+$\mathcal{L}_X(f)=Xf$.\par 
+
+The Lie derivative satisfies the following identities:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline 
+        Leibniz rule & $\mathcal{L}_X(\omega\wedge\eta)=\mathcal{L}_X(\omega)\wedge\eta+\omega\wedge\mathcal{L}_X(\eta)$\\
+        \hline 
+        Commutes with $d$ & $d\circ\mathcal{L}=\mathcal{L}\circ d$\\
+        \hline 
+        Cartan magic formula & $\mathcal{L}_X=d\circ \iota_X+\iota_X \circ d$\\
+        \hline 
+        Interior mult. of the commutator & $\iota_{[X,Y]}=\mathcal{L}_X\iota_Y-\iota_Y\mathcal{L}_X$\\
+        \hline
+    \end{tabular}
+\end{center}
+So at this point we have the interplay of various endomorphisms of $\Omega^\bullet(M)$:
+\begin{center}
+    \begin{tabular}{|c|}
+        \hline 
+       $\mathcal{L}_X:\Omega^\bullet(M)\to\Omega^\bullet(M)$\\
+        \hline 
+       $d:\Omega^\bullet(M)\to\Omega^{\bullet+1}(M)$\\
+        \hline 
+       $\iota_X:\Omega^\bullet(M)\to\Omega^{\bullet-1}(M)$\\
+       \hline 
+    \end{tabular}
+\end{center}
+Remember the definition of interior multiplication $\iota_X\omega(-)=\omega(X,-)$. It's a nilpotent operator of order 2, 
+satisfying the Poincaré rule for wedge multiplication:
+\begin{equation}
+    \iota_X(\omega\wedge\eta)=\iota_X(\omega)\wedge\eta+(-1)^{k}\omega\wedge\iota_X(\eta),\;\omega\in\Omega^k(M).
+\end{equation}
+
+\subsection{Symplectic and Hamiltonian vector fields}
+\begin{dang}
+    \begin{definition}
+        A symplectic manifold is a pair $(M,\omega)$ where $\omega\in\Omega^2(M)$ is a closed and 
+        \text{nondenerate} 2-form. By nondegeneracy of $\omega$, we mean that $\omega_p\in\bigwedge^2T_p^*M$ is nondegenerate 
+        for all $p\in M$.
+    \end{definition}
+\end{dang}
+Since $\omega_p:T_pM\oplus T_pM\to\bbR$ is nondegenerate, we have an isomorphism of fibers:
+\begin{equation}
+    T_pM\to T_p^*M: X\mapsto (Y\mapsto \omega_p(X,Y)).
+\end{equation}
+
+Let $E,E^\prime$ be two smooth vector bundles over $M$. A vector bundle morphism from $E$ to $E^\prime$ is a smooth map 
+$f:E\to E^\prime$, linear on fibers, that makes the following diagram commute:
+\begin{center}
+    \begin{tikzcd}
+        E\arrow[r,"f"]\arrow[d,"\pi"]&E^\prime\arrow[d,"\pi^\prime"]\\
+        M\arrow[r,"\mathds{1}_M"]&M
+    \end{tikzcd}
+\end{center}
+The identity morphism from $E$ to $E$ is defined by the map $\mathds{1}_E:E\to E$. Now, we claim that if a morphism of 
+vector bundles $f:E\to E^\prime$ is an isomorphism of vector spaces on each fiber, then it's actualy an isomorphism of 
+vector bundles. In fact, choose trivializations $(U,\varphi_U)$ and $(U,\varphi_U^\prime)$ of $E$ and $E^\prime$, then 
+\begin{equation}
+F_U= \varphi_U^\prime\circ f|_U\circ \varphi_U^{-1}:(p,v)\in U\times\bbR^r\mapsto (p,a_U(p)\cdot v)    
+\end{equation} 
+where $a_U: U\to GL_r(\bbR)$ is a smooth map. Here we are abusing notation and writing $f|_{U}$ in place of $f|_{E|_U}$. 
+Therefore, we have a smooth inverse 
+\begin{equation}
+    F_U^{-1}:U\times\bbR^r\to U\times\bbR^r:(p,v^\prime)\mapsto (p,a_U(p)^{-1}\cdot v^\prime)
+\end{equation}
+which yields an inverse $g_U=\varphi_U\circ F_U^{-1}\circ (\varphi_U^\prime)^{-1}$ to $f|_U$. In order to define a global 
+inverse to $f$, we need to prove that the family $\{g_U\}$ glues to a global map. However, we have on $U\cap V$
+\begin{equation}
+    \begin{split}
+        &g_U\big|_{U\cap V}= g_V\big|_{U\cap V}\iff\\
+        &\varphi_U\circ F_U^{-1}\circ (\varphi_U^\prime)^{-1}= \varphi_V\circ F_V^{-1}\circ(\varphi_V^\prime)^{-1}\iff\\
+        &F_U = \varphi_U^\prime\circ(\varphi_V^\prime)^{-1}\circ F_V\circ \varphi_V\circ\varphi_U^{-1}\iff \\
+        &F_U=\varphi_U^\prime\circ f\big|_{U\cap V}\circ v\varphi_U^{-1}
+    \end{split}
+\end{equation}
+which is true on $U\cap V$. So we gave a global inverse $g:E^\prime\to E$, which is a morphism of vector bundles that 
+is the inverse morphism to $f$.\par 
+
+From all this discussion, we see that a nondegenerate 2-form yields a vector bundle isomorphism
+\begin{equation}
+    \omega^\flat : TM\overset{\cong}{\rightarrow} T^*M.
+\end{equation}
+Remember the identification
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &\quad\quad\text{Alternating maps}\\
+            &\underset{k\text{ times}}{\underbrace{\fr{X}(M)\times\cdots\times \fr{X}(M)}}\to C^\infty(M)
+        \end{aligned}
+    \right\}\longleftrightarrow
+    \Omega^k(M)
+\end{equation}
+The key point here is the fact that $\omega:M\to \bigwedge^k M$ is smooth if and only if $\omega(X_1,\dots, X_k)$ 
+is smooth for any sequence $X_i\in\fr{X}(M),\;i=1,\dots, k$. So, the isomorphism of bundles $\omega^\flat$ yields an isomorphism of sections 
+$\fr{X}(M)\to \Omega^1(M):X\mapsto \iota_X(\omega)$. 
+
+\begin{dang}
+    \begin{definition}
+        (Symplectic and Hamiltonian vector fields).
+        Let $(M,\omega)$ be a symplectic manifold.
+        A vector field $X\in\fr{X}(M)$ is said to be symplectic if $\mathcal{L}_X(\omega)=0$. Furthermore, $X$ is said 
+        to be Hamiltonian if $\iota_X(\omega)=df$ for some $f\in C^\infty(M)$.
+    \end{definition}
+\end{dang}
+
+By the Cartan magic formula we see that $\iota_X(\omega)=d\iota_X(\omega)$, so $X$ is symplectic if and only if 
+$\iota_X\omega$ is closed. Also, by definition we see that $X$ is Hamiltonian if and only if $\iota_X\omega$ is exact.
+Then we have a inclusion $\fr{X}_{\text{Ham}}(M)\subset\fr{X}_{\omega}(M)$ and the equality occurs only if 
+$H_{\text{dR}}^1(M)=0$.
+
+Remember the followin important facts:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline 
+        $i:S\hookrightarrow M$ embbeding, with closed image 
+        & $i^*:H_{\text{dR}}^\bullet(M)\to H_{\text{dR}}^\bullet(S)$ surjective\\
+        \hline
+        $p:M\to N$ surjective submersion
+        & $p^*:H_{\text{dR}}^\bullet(N)\to H_{\text{dR}}^\bullet(M)$ injective\\
+        \hline
+    \end{tabular}
+\end{center}
+
+
+\begin{example}
+    (Symplectic vector field on a Torus).
+ On the circle $\mathbb{S}^1$, viewed as a regular submanifold of $\bbR^2$, define the closed (but not exact) 1-form 
+ \begin{equation}
+    \delta\theta = (ydx-xdy)\big|_{\mathbb{S}^1}.
+ \end{equation}
+ Remember that under the identification $T_p\mathbb{S}^1\cong i_{*,p}T_p\mathbb{S}^1$, we have $T_p\mathbb{S}^1=\Ker f_{*,p}$
+ where $f:\bbR^2\to\bbR:(x,y)\mapsto x^2+y^2-1$. So we can see that 
+ \begin{equation}
+    (y\frac{\partial}{\partial x}-x\frac{\partial}{\partial y})\bigg|_p\in T_p\mathbb{S}^1,\;\forall p\in \mathbb{S}^1.
+ \end{equation}
+ So there exist $X\in\fr{X}(\mathbb{S}^1)$ such that 
+ \begin{equation}
+    i_{*,p}X_p=(y\frac{\partial}{\partial x}-x\frac{\partial}{\partial y})\bigg|_p,\;\forall p\in\mathbb{S}^1.
+ \end{equation}
+ So by definition $\delta\theta(X)=1\in C^\infty(\mathbb{S}^1)$. Now, on the torus $\Sigma = \mathbb{S}^1\times \mathbb{S}^1$, define 
+ the form $\omega=\pi_1^*\delta\theta_1\wedge\pi_2^*\delta\theta_2$. Under the identifications
+ $T(\mathbb{S}^1\times\mathbb{S}^1)\cong T\mathbb{S}^1\times T\mathbb{S}^1$ and $(X_1,0)\to X_1,\;(0,X_2)\to X_2$ we have 
+ the global frame   
+ $\{X_1,X_2\}$ of $T(\mathbb{S}^1\times\mathbb{S}^1)$ (in particular we see that $\Sigma$ is paralelizable). 
+ In this frame, we compute 
+ the matrix of the form $\omega$ at any point. It gives 
+ \begin{equation}
+   \iota_{X_1}\omega:\left\{\begin{aligned}
+        &X_1\mapsto 0\\
+        &X_2\mapsto 1
+    \end{aligned}\right.
+ \end{equation}
+ So $\omega$ has matrix representation 
+ $\left(\begin{smallmatrix}\;\;0&1\\-1&0\end{smallmatrix}\right)$, which is nondegenerate. 
+Then we see that $(\Sigma, \omega)$ is a symplectic manifold. In particular we see that 
+\begin{equation}
+    \begin{split}
+         \iota_{X_1}\omega&=\iota_X(\pi_1^*\delta\theta_1\wedge\pi_2^*\delta\theta_2)\\
+         &=\iota_X(\pi_1^*\delta\theta_1)\wedge\pi_2^*\delta\theta_2-\pi_1^*\delta\theta_1\wedge\iota_X(\pi_2^*\delta\theta_2)\\
+         &=\iota_X(\pi_1^*\delta\theta_1)\wedge\pi_2^*\delta\theta_2\\
+         &=\pi_2^*\delta\theta_2
+    \end{split}
+\end{equation}
+ which is not an exact form. In fact, if $\pi_2^*\delta\theta_2$ is exact, then 
+ \begin{equation}
+    [\pi_2^*\delta\theta_2]=\pi_2^* [\delta\theta_2]=0\Rightarrow [\delta\theta_2]=0
+ \end{equation}
+ and $\delta\theta_2$ is exact, which is not the case. Therefore $X_1$ is symplectic, but not 
+ Hamiltonian !
+\end{example}
+
+\begin{example}
+    (Hamiltonian vector fields in $\bbR^{2n}$). Let $\omega=\sum_{i=1}^ndq_i\wedge dp_i$ be the standard 
+    symplectic form on $\bbR^{2n}$ where $(q,p)$ is the coordinate chart on $\bbR^{2n}$. Then if $H\in C^\infty(\bbR^{2n})$, 
+    we have the corresponding Hamiltonian vector field 
+    \begin{equation}
+        X_H=\sum_ia_i\frac{\partial}{\partial q_i}+\sum_jb_j\frac{\partial}{\partial p_j}.
+    \end{equation}
+    Now 
+    \begin{equation}
+        \begin{split}
+             \iota_{X_H}\omega &=\sum_i (\iota_{X_H}dq_i)\wedge dp_i-dq_i\wedge (\iota_{X_H}dp_i)\\
+             &=\sum_i (a_idp_i-b_idq_i).
+        \end{split}
+    \end{equation}
+    So $\iota_{X_H}\omega = dH$ if and only if 
+    \begin{equation}
+        b_{i}=-\frac{\partial H}{\partial q_i}\text{ and }a_i=\frac{\partial H}{\partial p_i},
+    \end{equation}
+    that is 
+    \begin{equation}
+        X_H = \sum_i (\frac{\partial H}{\partial p_i}\frac{\partial}{\partial q_i}
+        -\frac{\partial H}{\partial q_i}\frac{\partial}{\partial p_j}).
+    \end{equation}
+\end{example}
+
+\subsection{Examples/counter examples of symplectic manifolds}
+\begin{dang}
+    \begin{lemma}\label{lemma: Liouville volume}
+        (Liouville volume).
+        Let $(V, \omega)$ be a vector space with a skew symmetric bilinear form. Then 
+\begin{equation}
+    (V,\omega)\text{ is symplectic }\iff\;\omega^n\neq 0.
+\end{equation}
+    \end{lemma}
+\end{dang}
+Proof: We do the proof in three steps
+\begin{itemize}
+    \item A necessary condition to $\omega$ be nondegenerate is to $\dim(V)$ be even. If $\{v_1,\dots,v_{2n}\}$ is a 
+    basis of $V$ and $\{\alpha_1,\dots,\alpha_{2n}\}$ is the respective dual basis of $V^*$, then we compute the matrix 
+    of $\omega^\flat: V\to V^*$ relative to these basis. Suppose that 
+    \begin{equation}
+        \omega = \sum_{i<j}a_{ij}\alpha_i\wedge\alpha_j
+    \end{equation}
+    Then we claim that $\omega=(A_{ij})$ where 
+    \begin{equation}
+       \left\{ \begin{aligned}
+            &A_{ij}=a_{ji},\;i>j\\
+            &A_{ii}=0,\;\forall i\\
+            &A_{ij}=-a_{ij},\;i<j\\
+        \end{aligned}\right.
+    \end{equation}
+    In fact
+    \begin{equation}
+        \begin{split}
+            \omega^\flat(v_k)&=\sum_{i<j}a_{ij}\iota_{v_k}(\alpha_i\wedge\alpha_j)\\
+            &=\sum_{i<j}a_{ij}(\iota_{v_k}\alpha_i\wedge\alpha_j-\alpha_i\iota_{v_k}\alpha_j)\\
+            &=\sum_{i<j}a_{ij}(\delta_{ik}\alpha_j-\delta_{jk}\alpha_i)\\
+            &=\sum_{j=k+1}^{2n}a_{kj}\alpha_j-\sum_{i=1}^{k-1}a_{ik}\alpha_i\\
+            &=\sum_{j=k+1}^{2n}A_{jk}\alpha_j+\sum_{i=1}^{k-1}A_{ik}\alpha_i\\
+            &=\sum_{i=1}^{2n}A_{ik}\alpha_i.
+        \end{split}
+    \end{equation}
+    \begin{remark}
+        We have $\omega(v_k,v_l)=A_{lk}$, so $(A_{ij})$ is the GRAM matrix of $-\omega$.
+    \end{remark}
+    \item Now, let $\{\beta_1,\dots, \beta_{2n}\}$ be another basis of $V^*$ and $P$ be the change of basis matrix, that is 
+    $\alpha_i=\sum_{j}P_{ij}\beta_j$. Then we have 
+    \begin{equation}
+        \begin{split}
+            \omega &= \sum_{i<j}a_{ij}\sum_{k<l}(P_{ik}P_{jl}-P_{il}P_{jk})\beta_k\wedge\beta_l\\
+            &=\sum_{k<l}\sum_{i<j}(P_{jl}A_{ji}P_{ik}+P_{il}A_{ij}P_{jk})\beta_k\wedge\beta_l\\
+            &=\sum_{k<l}(P^TAP)_{kl}\beta_k\wedge\beta_l.
+        \end{split}
+    \end{equation}
+    So $A$ transforms through $P^TAP$.
+    \item Since $A$ is a skew symmetric matrix, we can found a basis $\{\beta_1,\dots,\beta_{2n}\}$ such that 
+    \begin{equation}
+        P^TAP = \text{Diag}\left(
+        \left[\begin{matrix}
+            0&-\lambda_1\\\lambda_1&0
+        \end{matrix}\right],\dots,
+        \left[\begin{matrix}
+            0&-\lambda_{n}\\\lambda_n&0
+        \end{matrix}\right]
+        \right)
+    \end{equation}
+    with $\lambda_i\in\{0,1\}$. That is
+    \begin{equation}
+        \omega = \sum_{j=1}^n\lambda_j\beta_{2j-1}\wedge\beta_{2j}.
+    \end{equation}
+    so we see that $\omega^n=n!(\prod_{j=1}^n\lambda_j)\beta_1\wedge\cdots\wedge\beta_{2n}$. Moreover, if 
+    $\{w_1,\dots,w_{2n}\}$ is the relative dual of $\{\beta_i\}$ in $V$, then $\omega^\flat:V\to V^*$ has matrix representation
+    $P^TAP$ as before. In particular $\det(\omega)\neq0\iff\det(P^TAP)\neq0\iff \prod_j\lambda_j^2\neq0$, i.e., if 
+    $\lambda_j=1$ for all $j$. Therefore  
+    \begin{equation}
+        \omega^n\neq0\iff \prod_{j=1}^n\lambda_j\neq0\iff \lambda_j=1,\;\forall j\iff \omega\text{ is nondegenerate}.
+    \end{equation}
+\end{itemize}
+\qed
+
+\begin{remark}
+    If $\omega\in\bigwedge^2 V$ is a skew symmetric bilinear form, then there exist a basis $v_1,\dots,v_n$ of $V$ such that 
+    $\omega$ has matrix representation 
+    \begin{equation}
+        \text{Diag}\left(
+            \left[\begin{matrix}
+            0&-1\\1&0
+        \end{matrix}\right],\dots,
+        \left[\begin{matrix}
+            0&-1\\1&0
+        \end{matrix}\right],
+        [0],\dots,[0]
+        \right).
+    \end{equation}
+    To see this, suppose that $\omega\neq0$, then there exist $u_1,u_2\in V$ such that $\omega(u_1,u_2)\neq0$. We can renormalize
+    these vectors in order to get $\omega(u_1,u_2)=1$. Now, let $U=\text{Span}\{u_1,u_2\}$, we claim that 
+    \begin{equation}
+        V = U\oplus U^\omega,\;U^\omega=\{v\in V:\omega(u,v)=0\;\forall u\in U\}.
+    \end{equation}
+    First we observe that $U\cap U^\omega=(0)$. In fact, if $u=a_1u_1+a_2u_2\in U^\omega$, then 
+    \begin{equation}
+        \begin{aligned}
+            &B(u,u_1)=a_2u_2 = 0\Rightarrow a_2=0,\\
+            &B(u,u_2)=a_1u_1 = 0\Rightarrow a_1=0.
+        \end{aligned}
+    \end{equation}
+    Moreover, if $v\in V$, define $u=\omega(v,u_2)u_1+\omega(v,u_1)u_2\in U$. Then we see that
+    \begin{equation}
+        \omega(v,u_1)=\omega(u,u_1)\text{ and }\omega(v,u_2)=\omega(u,u_2).
+    \end{equation} 
+    That is $v-u\in U^\omega$. So we see that $v=u+(v-u)\in U+U^\omega$. An induction step finishes the proof of the claim.
+\end{remark}
+
+Now we will see some examples/counter examples of symplectic manifolds. The following lemma is useful.
+\begin{dang}
+    \begin{lemma}
+        Let $(M,\omega)$ be a compact, symplectic manifold. Then $H_{\text{dR}}^2(M)\neq0$.
+    \end{lemma}
+\end{dang}
+Proof: We will show that $[\omega]\in H_{\text{dR}}^2(M)\setminus0$. By definition, we know that 
+$\omega_p\in\bigwedge T_p^*M$ is nondegenerate. By lemma~(\ref{lemma: Liouville volume}), we know that 
+$\omega_p^n\neq0$, then we see that $\omega^n$ is a volume form and $\int_M\omega^n\neq0$. Now, if 
+$[\omega]=0$, then $[\omega]^n=[\omega^n]=0$, i.e., $\omega$ is exact. This contradicts the fact that 
+$\int_M\omega^n\neq0$.\qed
+
+By the previous theorem, we see that compact manifolds $M$ such that $H_{\text{dR}}^2(M)=0$ are not symplectic manifolds.
+In particular $\mathbb{S}^{2n}$ has no symplectic structure for $n>1$, because it's a compact manifold with 
+$H_{\text{dR}}^2(\mathbb{S}^{2n})=0$.
+\begin{example}
+    Now we list some examples/counter examples of symplectic manifolds.
+    \begin{itemize}
+        \item $\mathbb{S}^3\times\bbR$ is symplectic. In fact we have a diffeomorphism
+        \begin{equation}
+           f: \mathbb{S}^3\times\bbR\overset{\cong}{\rightarrow}\bbR^4\setminus0:(v,t)\mapsto e^tv.
+        \end{equation}
+        However $\bbR^4\setminus0$ is a symplectic manifold with canonical symplectic form 
+        $\omega=\sum_{i=1}^2dq_i\wedge dp_i$.
+        \item $\mathbb{S}^3\times T^3$ is not symplectic. By applying Kunneth formula we see that 
+        \begin{equation}
+            H_{\text{dR}}^2(\mathbb{S}^3\times T^3)\cong H_{\text{dR}}^0(\mathbb{S}^3)\otimes H_{\text{dR}}^2(T^3).
+        \end{equation}
+        Now, suppose that $\omega$ is a symplectic form on $\mathbb{S}^3\times T^3$. Let $a=[\omega]\in H_{\text{dR}}^2(\mathbb{S}^3\times T^3)$. 
+        Then, by the previous formula we have 
+        \begin{equation}
+            a=\sum \alpha_i\otimes \beta_i\Rightarrow a^3=\sum_{i,j,k}\alpha_i\alpha_j\alpha_k\otimes \beta_i\beta_j\beta_k.
+        \end{equation} 
+        But $\beta_i\beta_j\beta_k\in H_{\text{dR}}^6(T^3)=0$ and $a^3=0$. However, since $\mathbb{S}^3\times T^3$ is compact, 
+        the Liouville form $\omega^3$ must be a non exact volume form, which is a contradiction with the equation $a^3=0$.
+        \item $\mathbb{S}^3\times \bbR^3$ is symplectic. This follows from a general fact: If $G$ is a Lie group, then 
+        we have a vector bundle isomorphism
+        \begin{equation}
+            T^*G\overset{\cong}{\rightarrow}G\times\fr{g}^*:(g,\beta)\mapsto (g,l_{g,*e}^*\beta).
+        \end{equation}
+        To see that the previous map is an isomorphism, we observe that it's a vector bundle morphism which is an isomorphism
+        of vector spaces on the fibers. To see smoothness, take $g\in G$ and $(U,x_1,\dots, x_n)$ a chart around $g$. Then 
+        we have the chain of compositions
+        \begin{center}
+            \begin{tikzcd}
+                U\times\bbR^n\arrow[r]& T^*G\arrow[r]&G\times\fr{g}^*\\
+                (g,v)\arrow[r,mapsto] &\sum_iv_idx_i\big|_{g}\arrow[r,mapsto]&(g, \langle v, (l_{g,*e}^*dx_i(g))_{i=1}^n\rangle)
+            \end{tikzcd}
+        \end{center}
+        So we need to check that $g\mapsto l_{g,*e}^*dx_i(g)\in\fr{g}^*$ is smooth. To see this, lets $\gamma: I\to G$ be a curve 
+        such that $\gamma(0)=e$, so $\gamma^\prime(0)\in\fr{g}$. Then 
+        \begin{equation}
+            dx_i\big|_g\circ l_{g,*e}\gamma^\prime(0)=\frac{d}{dt}\bigg|_{t=0}x_i(g\gamma(t))
+        \end{equation}
+        which is the derivative of the smooth function $(t,g)\mapsto x_i(g\gamma(t))$. To finnish the proof we just 
+        observe that $\mathbb{S}^3$ is the Lie group of quaternions.
+        \item There is no symplectic, compact submanifold $S\hookrightarrow \bbR^{2n},n\geq1$. Suppose to the countrary: 
+        There exist a compact manifold, such that the embbeding $i: S\hookrightarrow \bbR^{2n}$ induces a symplectic structure 
+        $i^*(\omega)$ on $S$. Since $i(S)\subset\bbR^{2n}$ is compact, then it's closed. Moreover, since $i$ is an imersion, we 
+        see that $i^*:H_{\text{dR}}^2(\bbR^{2n})\to H_{\text{dR}}^2(S)$ is surjective. But 
+        \begin{equation}
+            H_{\text{dR}}^2(\bbR^{2n})=0\Rightarrow H_{\text{dR}}^2(S)=0.
+        \end{equation}
+        By the previous lemma, this is a contradiction, because we can not have $H_{\text{dR}}^2=0$ on a compact 
+        symplectic manifold.
+    \end{itemize}
+\end{example}
+
+\section{Symplectomorphisms of the cotangent bundle}
+\subsection{Canonical form of the cotangent bundle}
+The goal of this section is to show that the cotangent bundle $T^*Q$ of a smooth manifold $Q$ has a 
+canonical symplectic structure. In particular, we get a canonical map 
+\begin{equation}
+    \text{Diff}(Q)\rightarrow \text{Symp}(T^*Q).
+\end{equation}
+
+To work with cotangent bundles, it's important to understand in detail how do we define its charts. 
+To do this we will set notation. 
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+       $Q$ & a smooth manifold\\
+       \hline 
+       $M=T^*Q$ & its cotangent bundle\\
+       \hline 
+       $\pi: M\to Q$ & the canonical projection\\  
+        \hline 
+        $p$ & a point of $M$\\
+        \hline
+        $q$ & a point of $Q$ (normaly we will have $q=\pi(q)$)\\
+        \hline 
+        $\alpha \in \Omega^1(M)$ & the canonical 1-form\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{dang}
+    \begin{notation}
+        Let $(U,x_1,\dots,x_n)$ be a local chart of $Q$ and let $\bar{x}_i,\xi_i\in C^\infty(TU)\;(i=1,\dots,n)$ be such that 
+    \begin{equation}
+        \begin{aligned}
+            &\bar{x}_i=\pi^*x_i\\
+            &\xi_i(p)=p(\frac{\partial}{\partial x_i}\bigg|_q),\;\forall p\in TU.
+        \end{aligned}
+    \end{equation}
+    Then $(TU,\barx_1,\dots,\barx_n,\xi_1,\dots,\xi_n)$ will be a local chart of $M$.
+    \end{notation}
+\end{dang}
+
+\begin{dang}
+    \begin{lemma}
+         The cotangent bundle $M$ has a canonical 1-form $\alpha\in\Omega^1(M)$. Let $X\in T_pM$, then we let  
+         \begin{equation}
+            \alpha_p(X)=  p(\underset{\in T_qQ}{\underbrace{\pi_{*,p}X_p}}),\; p\in T_q^*Q.
+         \end{equation}
+    \end{lemma}
+\end{dang}
+
+We can use the chart defined above to write a local expression to $\alpha$. Let 
+\begin{equation}
+    \alpha = \sum_ia_id\barx_i+\sum_ib_id\xi_i.
+\end{equation}
+We have 
+\begin{equation}
+    \begin{split}
+        \alpha(\frac{\partial}{\partial\barx_j})\bigg|_p &=\alpha_p(\frac{\partial}{\partial\barx_j}\bigg|_p)\\
+        &=p(\pi_{*,p}(\frac{\partial}{\partial\barx_j}\bigg|_p))\\
+        &=p(\frac{\partial}{\partial x_j}\bigg|_q)\\
+        &=\xi_i(p)
+    \end{split}
+\end{equation}
+while 
+\begin{equation}
+    \begin{split}
+        \alpha(\xi_i)\bigg|_p &=\alpha_p(\frac{\partial}{\partial\xi_i}\bigg|_p)\\
+        &=p(\pi_{*,p}(\frac{\partial}{\partial\xi_i}\bigg|_p))\\
+        &=0.
+    \end{split}
+\end{equation}
+So we obtain 
+    \begin{equation}
+        \alpha\big|_{TU} = \sum_i\xi_id\barx_i.
+    \end{equation}
+In particular we have  
+\begin{equation}
+   - d\alpha\big|_{TU} = \sum_i d\barx_i\wedge \xi_i
+\end{equation}
+which proves that $\omega=-d\alpha$ is nondegenerate 2-form on $M$. It's closed because it's exact, so we have a canonical 
+symplectic form defined on $M$. 
+\begin{dang}
+    \begin{theorem}
+        The cotangent bundle $M$ has a symplectic structure given by the form 
+        \begin{equation}
+            \omega = -d\alpha_{\text{can}}.
+        \end{equation}
+    \end{theorem}
+\end{dang}
+
+The canonical 1-form has an important characterization.
+\begin{dang}
+    \begin{lemma}
+        The canonical 1-form $\alpha\in\Omega^1(M)$ is characterized as being the unique 1-form such that 
+        \begin{equation}
+            \mu^*\alpha = \mu 
+        \end{equation}
+        for all $\mu\in \Omega^1(Q)$.
+    \end{lemma}
+\end{dang}
+Proof: First we observe that $\mu: Q\to M$ by definition. So $\mu^*:\Omega^1(M)\to\Omega^1(Q)$ and the equation 
+$\mu^*\alpha = \mu$ makes sense. Now, assume that this equation is true and let $p\in M$ with $q=\pi(p)\in Q$. Let 
+$(U,x_1,\dots, x_n)$ be a chart centered in $q$ and suppose that $p=\sum a_idx_i(q),a_i\in\bbR$. By defining a new chat 
+$y_i=x_i+a_i\;(i=1,\dots,n)$ in $U$ we see that we can assume $x_i(q)=a_i$ without lost of generality. Now 
+define a bump function $\rho\in C^\infty(Q)$ with support in $U$ and satisfying 
+$\rho|_V\equiv 1$ in some neighborhood $V\ni q,V\subset U$. Also define local sections 
+\begin{equation}
+    \left\{\begin{aligned}
+        &\widetilde{\mu}=\sum x_idx_i\in\Omega^1(U)\Rightarrow \mu=\rho\widetilde{\mu}\in\Omega^1(Q)\\
+        &\widetilde{\sigma}=\sum a_idx_i\in\Omega^1(U)\Rightarrow \sigma=\rho\widetilde{\sigma}\in\Omega^1(Q)
+    \end{aligned}\right.
+\end{equation}
+Then we see that $\mu(q)=\sigma(q)=p$. By hypothesis, the following equations are satisfied
+\begin{equation}
+    \mu^*\alpha=\mu\text{ and }\sigma^*\alpha = \sigma.
+\end{equation}
+Then we compute
+\begin{equation}
+    \mu_{*,q}(\frac{\partial}{\partial x_j}\bigg|_q)
+    =\frac{\partial}{\partial\barx_j}\bigg|_p+\frac{\partial}{\partial\xi_j}\bigg|_p 
+    \text{ and }
+    \sigma_{*,q}(\frac{\partial}{\partial x_j}\bigg|_q)=\frac{\partial}{\partial\barx_j}\bigg|_p
+\end{equation}
+while since $\mu(q)=\sigma(q)=p$, we get 
+\begin{equation}
+    \mu_q(\frac{\partial}{\partial x_j}\bigg|_q)=\sigma_q(\frac{\partial}{\partial x_j}\bigg|_q)=a_j.
+\end{equation}
+Therefore, we see that 
+\begin{equation}
+    \begin{aligned}
+        &\alpha_p(\frac{\partial}{\partial\barx_j}\bigg|_p)=a_j=\xi_j(p)\\
+        &\alpha_p(\frac{\partial}{\partial\xi_j}\bigg|_p)=0
+    \end{aligned}
+\end{equation}
+so $\alpha = \sum \xi_jd\barx_j$. The converse of the lemma is easy.\qed 
+
+\subsection{Cotangent lifting}
+Consider the series of diagrams, where $\phi :Q_1\overset{\cong}{\rightarrow}Q_2$.
+\begin{center}
+    \begin{tikzcd}
+       TQ_1 \arrow[r,"T\phi"]\arrow[d,"\pi"]& TQ_2\arrow[d,"\pi"]\\
+       Q_1 \arrow[r,"\phi"]& Q_2
+    \end{tikzcd}$\to$
+    \begin{tikzcd}
+         T^*Q_2 \arrow[r,"T\phi^*"]\arrow[d,"\pi"]& T^*Q_1\arrow[d,"\pi"]\\
+       Q_2 \arrow[r,"\phi^{-1}"]& Q_1
+    \end{tikzcd}$\to$
+    \begin{tikzcd}
+        T^*Q_1 \arrow[r,"\hat{\phi}"]\arrow[d,"\pi"]& T^*Q_2\arrow[d,"\pi"]\\
+       Q_1 \arrow[r,"\phi"]& Q_2
+    \end{tikzcd}
+\end{center}
+where $\hat{\phi}=(T\phi^*)^{-1}$. We claim that $\hat{\phi}^*\alpha_2=\alpha_1$. This follows from the calculation 
+\begin{equation}
+    \begin{split}
+        (\hat{\phi}^*\alpha_2)_p(X)&=(\alpha_2)_{\hat{\phi}(p)}(\hat{\phi}_{*,p}X)\\
+        &=\hat{\phi}(p)\pi_{*,\hat{\phi}(p)}\hat{\phi}_{*,p}X\\
+        &=\hat{\phi}(p)(\pi\circ\hat{\phi}_{*,p})X\\
+        &=\hat{\phi}(p)(\phi\circ\pi)_{*,p}X\\
+        &=\hat{\phi}(p)\phi_{*,\pi(p)}\pi_{*,p}X\\
+        &=\hat{\phi}(p)T\phi \pi_{*,p}X\\
+        &=((T\phi^*)\hat{\phi}(p))\pi_{*,p}X\\
+        &=p(\pi_{*,p}X)\;(\text{because }\hat{\phi}=(T\phi^*)^{-1}).
+    \end{split}
+\end{equation}
+
+Now, if $Q_1=Q_2=Q$, we have constructed a monomorphism (of groups)  
+\begin{equation}
+    \text{Diff}(Q)\hookrightarrow \text{Symp}(M):\phi\mapsto \hat{\phi}.
+\end{equation}
+
+We will finnish this section with two natural questions: 
+\begin{dang}
+    \begin{itemize}
+    \item[(1)] We know that if $F=\hat{\phi}$ is the cotangent lift of a diffeomorphism $\phi\in\text{Diff}(Q)$, then 
+    $F^*\alpha=\alpha$. We will show that the converse is also true, so the equation $F^*\alpha=\alpha$  
+    characterizes cotangent lifts of diffeomorphisms.
+    \item[(2)] Is the map $ \text{Diff}(Q)\hookrightarrow \text{Symp}(M):\phi\mapsto \hat{\phi}$ surjective? The answer 
+    is not. We will show that in general, the following fiber preserving map 
+    \begin{equation}
+        \phi_A:M\to M: p\mapsto p+A_{\pi(p)}
+    \end{equation}
+    for $A\in\Omega^1(Q)$ fixed, is not a cotangent lift.
+\end{itemize}
+\end{dang}
+For (1), let $F:M\to M$ be a diffeomorphism such that $F^*\alpha=\alpha$. 
+\begin{itemize}
+    \item Define the \textit{Euler vector field} $v\in\fr{X}(M)$ as the (unique) solution of the equation
+    \begin{equation}
+        \iota_v\omega = -\alpha.
+    \end{equation}
+    In local coordinates we have:
+    \begin{equation}
+        \iota_v\omega = \sum_i\iota_v(d\barx_i\wedge d\xi_i)=\sum_i d\barx_i(v)d\xi_i-d\xi_i(v)d\barx_i.
+    \end{equation}
+    So $d\barx_i(v)=0$ and $d\xi_i(v)=\xi_i$, i.e., $v = \sum_i\xi_i\frac{\partial}{\partial\xi_i}$ in local coordinates. 
+    Moreover, we claim that $F_*v = v$. To see this we calculate
+    \begin{equation}
+        \begin{split}
+            \iota_{F_*v}\omega(X)\big|_{F(p)}&=\omega_{F(p)}(F_{*,p}v_p,X_{F(p)})\\
+            &= (F^*\omega)_p(v_p, (F^{-1})_{*,F(p)}X_{F(p)})\\
+            &=\omega_p(v_p, (F^{-1})_{*,F(p)}X_{F(p)})\\
+            &=(\iota_v\omega)_p((F^{-1})_{*,F(p)}X_{F(p)})\\
+            &=-\alpha_p((F^{-1})_{*,F(p)}X_{F(p)})\\
+            &=-((F^{-1})^*\alpha)_{F(p)}X_{F(p)}\\
+            &=-\alpha_{F(p)}(X_{F(p)})\\
+            &=-\alpha(X)\big|_{F(p)}.
+        \end{split}
+    \end{equation}
+    So, by uniqueness of the solution, we get $F_*v=v$.
+    \item Let $\varphi^v$ be the flux of $v$ in some open set $U\subset M$. We claim that $\varphi_t^v\circ F = F\circ\varphi_t^v$. 
+    To see this define the curve $\gamma(t)= F^{-1}\circ\varphi_t^v(F(p))$ for some fixed $p\in U$. Then we see that 
+    $\gamma(0)= F^{-1}\circ\varphi_0^v(F(p)) = F^{-1}F(p) =p$, and 
+    \begin{equation}
+       \begin{split}
+        \gamma^\prime(t)&= (F^{-1})_{*,\varphi_t^v(F(p))} \frac{d}{dt}\bigg|_t\varphi_t^v(F(p))\\
+        &=(F^{-1})_{*,\varphi_t^v(F(p))}v_{\varphi_t^v(F(p))}\\
+        &=(F^{-1}_*v)_{F^{-1}\varphi_t^v(F(p))}\\
+        &=v_{\gamma(t)}.
+       \end{split}
+    \end{equation}
+    Then we see that $\gamma$ is the integral curve of $v$ starting at $p$. Therefore $\gamma(t)=\varphi_t^v(p)$ by 
+    uniqueness of integral curves. Now we compute explictly the flux $\varphi_t^v$ of $v$. We need to solve the EDO 
+    \begin{equation}
+        \frac{\partial}{\partial t}\varphi_t^v(p) =  v_{\varphi_t^v(p)}.
+    \end{equation}
+    The left hand side is 
+    \begin{equation}
+        \sum_i(\barx_i\circ\varphi_t^v(p))^\prime(t)\frac{\partial}{\partial\barx_i}
+        +\sum_i(\xi_i\circ\varphi_t^v(p))^\prime(t)\frac{\partial}{\partial\xi_i}.
+    \end{equation}
+    Using the expression of the Euler vector field obtained before, we get 
+    \begin{equation}
+        \left\{\begin{aligned}
+            &(\barx_i\circ\varphi_t^v(p))^\prime(t)=0\\
+            &(\xi_i\circ\varphi_t^v(p))^\prime(t)=\xi_i\circ \varphi_t^v(p)
+        \end{aligned}\right.
+    \end{equation}
+    So $\barx_i\circ\varphi_t^v(p)=\barx_i\circ\varphi_0^v(p)=\barx_i(p)$ and 
+    $\xi_i\circ\varphi_t^v(p)=\xi_i(p)e^t$. Therefore $\varphi_t^v(p)=e^tp$.
+    \item  We claim that $F(\lambda p)=\lambda F(p)$. 
+    By the previous item we have $F(\lambda p)=\lambda F(p)$ for $\lambda>0$. However, for $p\in M$ fixed, the map 
+    $f:\lambda\in\bbR\mapsto F(\lambda p)$ is smooth. In fact, by taking limits we see that 
+    \begin{equation}
+        \lim_{\lambda\to0^+}F(\lambda p)=0_{\pi(F(p))}\text{ and }\lim_{\lambda\to0^-}F(\lambda p)=0_{\pi(F(-p))}
+    \end{equation}
+    so $\pi(F(p))=\pi(F(-p))$. This shows that we have a smooth map $f:\bbR\to M_{\pi(F(p))}$, 
+    of finite dimensional vector spaces. Remember that $M_{\pi(F(p))}\subset M$ is a regular submanifold, so by restricting 
+    the codomain we still have a smooth map. Its derivative on 0 yields
+    \begin{equation}
+        \frac{d}{d\lambda}\bigg|_{\lambda=0}f(\lambda)=\left\{\begin{aligned}
+         &\lim_{\lambda\to0^+}\frac{F(\lambda p)}{\lambda}=F(p)\\
+         &\lim_{\lambda\to0^-}\frac{F(\lambda p)}{\lambda}=-F(-p)             
+        \end{aligned}\right.
+    \end{equation}
+    So we conclude the claim. Now we build a map $\phi=\pi\circ F\circ s$, where $s\in\Gamma(M)$
+    is the zero section, i.e., $s(q)=0_q$. We verify 
+    \begin{equation}
+        \phi\circ\pi(p)=\pi\circ F(0_{\pi(p)})=\pi(0_{\pi(F(p))})=\pi(F(p))
+    \end{equation}
+    so $\phi\circ \pi=\pi\circ F$. However, the cotangent lifting also satisfies $\phi\circ\pi=\pi\circ\hat{\phi}$, then we 
+    see that $G=\hat{\phi}F^{-1}$ is such that $\pi\circ G=\pi$ while $G^*\alpha=\alpha$. In this condition we claim that 
+    $G=\mathds{1}_M$. In fact, we have 
+    \begin{equation}
+        \begin{split}
+            (G^*\alpha)_p(X)&=\alpha_{G(p)}(G_{*,p}X)\\
+            &=G(p)\pi_{*,G(p)}G_{*,p}X\\
+            &=G(p)(\pi\circ G)_{*,p}X\\
+            &=G(p)\pi_{*,p}X
+        \end{split}
+    \end{equation}
+    while $\alpha_p(X)=p(\pi_{*,p}X)$. Since $\pi_{*,p}$ is surjective, we get $G(p)=p$. This finnish the proof.\qed
+\end{itemize}
+
+For (2), we calculate 
+\begin{equation}
+    \begin{split}
+        (\phi_A^*\alpha)(X)\bigg|_p&=\alpha_{\phi_A(p)}(\phi_{A*}X_p)\\
+        &=\phi_A(p)\pi_{*,\phi_A(p)}\phi_{A*}X_p\\
+        &=\phi_A(p)(\pi\circ\phi_A)_{*,p}X_p\\
+        &=\phi_A(p)\pi_{*,p}X_p \\
+        &=(p+A_{\pi(p)})\pi_{*,p}X_p\\
+        &=\alpha_p(X_p)+(\pi^*A)_p(X_p)
+    \end{split}
+\end{equation}
+and we conclude that $\phi_A^*\alpha=\alpha+\pi^*A$. So $\phi_A^*$ is a symplectomorphism of $M$ if and only 
+if $A\in\Omega^1(Q)$ is closed. However, by the previous item, we see that if $A\neq0$, then $\phi_A$ is not 
+a cotangent lift. 
+
+\section{Poisson Bracket and Darboux coordinates}
+\subsection{Poisson Bracket}
+Let $\omega\in\Omega^1(M)$ be a nondegenerate form (which is not necesseraly closed). Define the 
+bilinear map $C^\infty(M)\times C^\infty(M)\to C^\infty(M)$ by 
+\begin{equation}
+    \{f,g\}=\omega(X_g,X_f),\; f,g\in C^\infty(M).
+\end{equation}
+We claim that $\{\;,\;\}$ satisfies the Jacobi identity if and only if $d\omega=0$. In fact, if $f,g,h\in C^\infty(M)$, then 
+we have 
+\begin{equation}
+ -\iota_{[X_f,X_g]}\iota_{X_h}\omega = \iota_{X_h}\iota_{[X_f,X_g]}\omega.
+\end{equation}
+The LHS is equal to 
+\begin{equation}
+    \begin{split}
+       -\iota_{X_h}\omega([X_f,X_g])&=-dh([X_f,X_g])\\
+        &=-(X_fX_g)h+(X_gX_f)h\\
+        &=-X_f(X_gh)+X_g(X_fh)\\
+        &=-X_f\{g,h\}+X_g\{f,h\}\\
+        &=-\{f,\{g,h\}\}+\{g,\{f,h\}\}\\
+        &=-\{f,\{g,h\}\}-\{g,\{h,f\}\}.
+    \end{split}
+\end{equation}
+For the RHS we develop first 
+\begin{equation}
+    \begin{split}
+        \iota_{[X_f,X_g]}\omega&=(\mathcal{L}_{X_f}\iota_{X_g}-\iota_{X_g}\mathcal{L}_{X_f})\omega\\
+        &=\mathcal{L}_{X_f}dg -\iota_{X_g}\iota_{X_f}d\omega \\
+        &=d(\iota_{X_f}dg)-\iota_{X_g}\iota_{X_f}d\omega\\
+        &=d(X_fg)-\iota_{X_g}\iota_{X_f}d\omega\\
+        &=d\{f,g\}-\iota_{X_g}\iota_{X_f}d\omega.
+    \end{split}
+\end{equation}
+Then we get 
+\begin{equation}
+    \begin{split}
+       \iota_{X_h}d\{f,g\}-\iota_{X_h}\iota_{X_g}\iota_{X_f}d\omega&=\mathcal{L}_{X_h}\{f,g\}-d\omega(X_f,X_g,X_h)\\
+       &=\{h,\{f,g\}\}-d\omega(X_f,X_g,X_h)
+    \end{split}
+\end{equation}
+Because $\iota_{X_h}\{f,g\}=0$. Then we get 
+\begin{equation}
+    J(f,g,h)=d\omega(X_f,X_g,X_h),\;\forall g,f,h\in C^\infty(M)
+\end{equation}
+where $J(f,g,h)=\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}$ is the Jacobiator of $f,g$ and $h$. So the Jacobi identity
+is equivalent to $J(f,g,h)=0,\;\forall f,g,h\in C^\infty(M)$. For any point $p$, we have an isomorphism 
+$T_pM\overset{\cong}{\to}T_p^*M:X\mapsto\iota_X\omega_p$. But if $(U,x_1,\dots,x_n)$ is a chart, then 
+$dx_i(p),i=1,\dots,n$ is a basis of $T_p^*M$ for any $p\in U$. Fix a point $p\in U$ and let $\rho\in C^\infty(M)$ 
+be a bump function with support in $U$ satisfying $\rho|_V\equiv 1$ for some open set $V\subset U$ containing $p$. Therefore 
+$\widetilde{x}_i=\rho x_i\in C^\infty(M)$ and we have Hamiltonian vector fields $X_i=X_{\widetilde{x}_i},i=1,\dots,n$ 
+such that $\text{Span}(X_i(q))_{i=1}^n=T_qM,\;\forall q\in V$. This proves that if $d\omega(X_f,X_g,X_h)=0$ for 
+all $f,g,h\in C^\infty(M)$, then $d\omega=0$.\par 
+
+In conclusion, for a symplectic manifold $(M,\omega)$, we have a Lie algebra $(C^\infty(M),\{\cdot,\cdot\})$. Moreover, 
+we have the identity $\{f,gh\}=\{f,g\}h+g\{f,h\}$. In fact 
+\begin{equation}
+    \{f,gh\}=X_f(gh)=(X_fg)h+g(X_fh)=\{f,g\}h+g\{f,h\}.
+\end{equation}
+Therefore we have an induced Poisson manifold structure on $M$.
+
+\section{Distributions and symplectic reduction}
+
+A distribution on a smooth manifold $M$ is a map $M\ni p\mapsto D_p\subset TpM$. The rank of a distribution 
+at a point $p\in M$ is $\dim(D_p)$. Also, we say that $D$ is a smooth distribution if for each point $p\in M$ and 
+$v\in D_p$, there exist $X\in\fr{X}(M)$ subordinated to $D$, i.e., $X_q\in D_q$, satisfying $X_p=v$. We have 
+the following observation:
+\begin{center}
+    $D$ is smooth of constant rank $\iff$ $D$ is a subbundle of $TM$.
+\end{center}
+In fact, suppose that $D$ is a smooth distribution of rank $k$ at $p\in M$. Let $\{v_1,\dots, v_k\}$ a basis 
+of $D_p$ and $X_i\in\fr{X}(M)$ the associated vector fields subordinated to $D$ and satisfying $X_i(p)=v_i,\;i=1,\dots,n$. 
+Choose a chart $(U,x_1,\dots, x_n)$ around $p$ and let 
+\begin{equation}
+    X_i=\sum_j a_{ij}\frac{\partial}{\partial x_j},\; a_{ij}\in C^\infty(M).
+\end{equation} 
+If $U\to  M_{k\times n}(\bbR)$, then $A$ has maximal rank at $p$ and we can permute the $x_j$'s in such a way 
+that $A=(a_{ij})_{i,j=1}^k$ has full rank. So $\det(A)\neq0$ in a neighborhood $V\ni p$. So, we see that 
+$TV=\text{Span}(X_1,\dots,X_k)\oplus \text{Span}(\tfrac{\partial}{\partial x_{k+1}},\dots,\tfrac{\partial}{\partial x_n})$ 
+componentwise. This frame defines $D|_V$ as a regular submanifold of $TV$ of dimension $k$. It's local trivialization is 
+defined by the frame $\{X_1,\dots, X_k\}$ at $V$.\par 
+
+We say that a smooth distribution is integrable if for each $p\in M$, there exist a regular submanifold $S\ni p$ such that 
+$D|_S=TS$. For each $p$, we order by inclusion these submanifolds and call the maximal ones by \textit{leafs}.
+Now we write $\Gamma(D)$ for the set of vector fields of $M$ subordinated to $D$. By the Frobenius theorem, we have
+\begin{center}
+    $D$ is integrable $\iff$ $[\Gamma(D),\Gamma(D)]\subset \Gamma(D)$.
+\end{center} 
+
+Two facts:
+\begin{itemize}
+    \item If $\omega\in\Omega^2(M)$, then 
+    \begin{center}
+        $D=\Ker(\omega^\flat)$ is smooth $\iff$ if it's of costant rank.\;\;(why??)
+    \end{center}
+    \item If $d\omega=0$, then $D$ is involutive. In fact, let $X,Y\in\Gamma(D)$, then 
+    \begin{equation}
+        \begin{split}
+            \iota_{[X,Y]}\omega&=\mathcal{L}_X\iota_Y\omega-\iota_Y\mathcal{L}_X\omega\\
+            &=-\iota_Y\iota_Xd\omega\quad(\text{because }\iota_X\omega=\iota_Y\omega=0)\\
+            &=0\quad(\text{because }d\omega=0),
+        \end{split}
+    \end{equation}
+    so $[X,Y]\in D$. Then we get the important observation:
+    \begin{dang}
+        \begin{remark}
+        $\text{Ker}(\omega)$ has constant rank if and only if it's an integrable distribution, so its define leafs 
+        on $M$.
+    \end{remark}
+    \end{dang}
+\end{itemize}
+
+Before, the next example recall that if $f: M\to N$ is smooth with regular value $c$. Then  
+$S=f^{-1}(c)$ is a regular submanifold. Furthermore we have 
+\begin{center}
+    $j_{*,p}T_pS=\Ker(f_{*,p}),\;\forall p\in S$
+\end{center}
+where $j:S\to M$ is the inclusion (which is an embedding). So a vector field $X\in\fr{X}(M)$ is tangent to $S$ if and only if 
+$f_{*,p}X_p=0$ for all $p\in M$. In particular if $f=(f_1,\dots,f_n):M\to\bbR^n$, then 
+$df(X)|_p=(df_i(X)|_p)_{i=1}^n$. That is, $X$ is tangent to $S$ if and only if $df_i(X)=0,i=1,\dots,n$. 
+
+\begin{example}
+    Let $M$ be a manifold and $\omega \in \Omega^k(M)$. 
+    Suppose that $\pi : M \to B$ is a surjective submersion with connected fibers. 
+    We say that $\omega$ is \textit{basic} (with respect to $\pi$) if there exists a form $\overline{\omega} \in \Omega^k(B)$ 
+    such that $\pi^*\overline{\omega} = \omega$.
+
+\begin{enumerate}
+    \item[(a)] Show that $\omega$ is basic iff $i_X\omega = 0$ and $\mathcal{L}_X\omega = 0$ for all vector fields $X$ tangent 
+    to the fibers of $\pi$. In particular, if $\omega$ is closed, show that it is basic if 
+    $\ker(T\pi) \subseteq \ker(\omega)$ (pointwise in $M$).\par 
+    Solution: $(\Rightarrow)$ Let $\omega=\pi^*\overline{\omega}$ be basic and let $X$ be a vector field tangent to $S=\pi^{-1}(q)$. 
+    We have 
+    \begin{equation}
+        \iota_X\omega(Y)\big|_p=\omega_p(X_p,Y_p)=\overline{\omega}_q(\pi_{*,p}X_p,\pi_{*,p}Y_p)=0
+    \end{equation}
+    because $\pi_{*,p}X_p=0$. Furthermore, $\omega$ basic implies that $d\omega$ is basic. So $\iota_Xd\omega=0$ and 
+    $\mathcal{L}_X\omega=0$.\par 
+    $(\Leftarrow)$ Fix $q\in B$ and let $p\in \pi^{-1}(q)$. Since $\pi$ is a submersion, there exist charts 
+    $(U,\varphi)$ and $(V,\psi)$ centered around $p$ and $q$ respectively, satisfying $\pi(U)\subset V$ and 
+    \begin{equation}
+        \psi\circ\pi\circ\varphi^{-1}(r_1,\dots,r_m,r_{m+1},\dots,r_n)=(r_1,\dots,r_m).
+    \end{equation}
+    Therefore $\pi^{-1}(q)\cap U=\{x_1=0,\dots,x_m=0\}$ where we write $x_i=r_i\circ\varphi$. In particular, we see that 
+    $X$ is tangent to $\pi^{-1}(q)$ in $U$ if and only if $dx_i(X)=0,i=1,\dots,m$, i.e., 
+    $X\in\text{Span}(\tfrac{\partial}{\partial x_{m+1}},\dots,\tfrac{\partial}{\partial x_n})$ in $U$. Now, in $U$ we have 
+    $\omega=\sum_I\omega_Idx_I$ where $I=(i_1,\dots, i_k)$ are increasing sequences of integers between 1 and $n$. The condition 
+    $\iota_X\omega=0$ for all vector fields tangent to $\pi^{-1}(q)$, implies that $\omega_I=0$ whenever 
+    $I=(i_1,\dots, i_k)$ and $i_\ell\geq m+1$ for some $1\leq\ell\leq k$. We also see that  
+    \begin{equation}
+        \mathcal{L}_X\omega = \iota_Xd\omega 
+        = \iota_X(\sum_{I,j}\frac{\partial\omega_I}{\partial x_j}dx_j\wedge dx_I)=0.
+    \end{equation}
+    So $\tfrac{\partial \omega_I}{\partial x_j}=0,\forall j\geq m+1$. Assuming $U$ connected, this means that 
+    \begin{equation}
+        \omega_I\circ\varphi^{-1}(r_1,\dots,r_m,r_{m+1},\dots, r_n)=\omega_I\circ\varphi^{-1}(r_1,\dots,r_m,0,\dots,0)
+    \end{equation}
+    which means that $\omega_I$ is constant on $\pi^{-1}(q)$. This proves that for all $I=(i_1,\dots, i_k)$, 
+    the the map $p\mapsto \omega_p(\partial_{i_1},\dots,\partial_{i_k})$ is constant 
+    on $\pi^{-1}(q)$. Since the fibers are connected, 
+    this shows that the map $p\mapsto \omega_p(X_1(p),\dots, X_k(p))$ is constant on the fibers 
+    for any sequence of vector fields $X_1,\dots, X_k\in\fr{X}(M)$. Now, let $Y_i\in\fr{X}(B),i=1,\dots,k$ be fixed. We want 
+    to define $\overline{\omega}(Y_1,\dots,Y_k)$. To do this we observe that since $\pi$ is a surjective submerion, there exist 
+    $X_i\in\fr{X}(M),i=1,\dots,k$ such that $\pi_{*,p}X_p=Y_{\pi(p)}$. Now, since the 
+    map $\omega(X_1,\dots, X_k)\in C^\infty(M)$ is costant on the fibers of $\pi$, we have an unique smooth map 
+    $F\in C^\infty(B)$ such that $F\circ\pi = \omega(X_1,\dots, X_k)$. We then define $\overline{\omega}(Y_1,\dots,Y_k)=F$. Since 
+    $\iota_X\omega=0$ whenever $X\in\Ker(\pi_{*})$, we see that this defintion is independent on the choice of vector fields 
+    $X_i\in\fr{X}(M)$ satisfying $\pi_{*,p}X_p=Y_{\pi(p)}$.
+
+
+    \item[(b)] Suppose that $\omega$ is a closed $2$-form on $M$ and $\ker(T\pi) = \ker(\omega)$. 
+    Show that $\omega = \pi^*\overline{\omega}$ and $\overline{\omega} \in \Omega^2(B)$ is symplectic.\par 
+    Solution: First we need to show that $\omega$ is basic. The vector fields $X\in\fr{X}(M)$ 
+    tangent to the fibers of $\pi$ are such that $X_p\in\Ker(\pi_{*,p})$, i.e., $X\in\Gamma(\Ker(\pi_*))$. So the 
+    equality $\Gamma(\Ker(\pi_*))=\Gamma(\ker(\omega))$ means that $\iota_X\omega=0$ for all vector fields $X$ which are 
+    tangent to the fibers of $\pi$. Moreover, since $\omega$ is closed we see that 
+    \begin{equation}
+        \mathcal{L}_X\omega = (d\iota_X+\iota_Xd)\omega=0
+    \end{equation} 
+    as well. By the previous item $\omega$ is basic, i.e., there exist $\overline{\omega}\in\Omega^2(B)$ such that 
+    $\pi^*(\overline{\omega})=\omega$. This is a closed form by the injectivity of $\pi^*$ and it's nondegenerate because 
+    $\iota_Y\overline{\omega}=0$ if and only if $\iota_X\omega=0$ where $X$ and $Y$ are $\pi$ related. However, the last 
+    equality means that $X\in\Gamma(\Ker(\omega))=\Gamma(\Ker(\pi_*))$, so $\pi_*X=0\Rightarrow Y=0$.
+
+    \item[(c)] (Application to reduction) Let $(M,\omega)$ be a symplectic manifold and $i : N \hookrightarrow M$ a 
+    submanifold such that $D = TN \cap TN^\omega \subset TN$ has constant rank (e.g., $N$ could be coisotropic). 
+    We saw in class that $D$ is an integrable distribution (by Frobenius); suppose that the leafspace $B := N/\sim$ 
+    is smooth so that the natural projection $\pi : N \to B$ is a submersion. Show that $B$ inherits a unique 
+    symplectic form $\omega_{\text{red}}$ with the property that $\pi^*\omega_{\text{red}} = \iota^*\omega$.\par
+    Solution: We know that $D=TN\cap TN^\omega=\Ker(\omega_N)$ where $\omega_N=i^*\omega$. We know that $D$ is of constant rank 
+    if and only if it's integrable, so it induces leafs on $N$. If the leaf space $B=N/\sim$ is a smooth manifold, then we have 
+    an induced surjective submersion $\pi:N\to B$ such that its fibers are the leafs induced by $D$ on $N$. Now we claim that 
+    $\Gamma(D)=\Gamma(\Ker(\pi_*))$. In fact, if $X\in\Gamma(\Ker(\pi_*))$, then $X$ is a vector field tangent to the fibers of $\pi$, 
+    which are leafs of $N$ induced by $D$. If $p\in M$, then there exist a leaf $S\ni p$ such that $TS=D|_S$, so 
+    $X_p\in T_pS=D_p$, i.e. $X\in\Gamma(D)$. This proves that $D=\Ker(\pi_*)$ and by the previous item we see that 
+    there exist $\omega_{\text{red}}\in\Omega^2(B)$ such that $\pi^*\omega_{\text{red}}=\omega_N$.
+\end{enumerate}
+\end{example}
+
+Now we will apply this machinery to a concrete example.
+\begin{example}
+    Let $M$ be a symplectic manifold and $H\in C^\infty(M)$ a Hamiltonian. Suppose that $c\in\bbR$ is a regular 
+    value of $H$, so $N=H^{-1}(c)\subset M$ is a regular submanifold. Since $\text{codim}(N)=1$, it's a coisotropic 
+    submanifold, i.e., $TN^\omega\subset TN$. This follows from the following. If $(V,\Omega)$ is a symplectic vector space 
+    and $W\subset V$ is a codimension 1 vector space, then $W^\Omega\subset W$. In fact, since $L=W^\Omega$ is a line, so 
+    $L\subset W\iff \exists \ell\in L\cap W$. If this is not the case, then $V=W\oplus L$ and any $v\in V$ is of the form 
+    $v=w+\lambda\ell$. So $\Omega(v,\ell)=\Omega(w,\ell)=0$, because $\ell\in L=W^\Omega$ and $\Omega$ is not nondegenerate.\par 
+
+    Now we know that $D=TN\cap TN^\omega=TN^\omega$, which is of constant rank 1. Since $D=\Ker(\omega_N)$, it's an 
+    integrable distribution which induces a set of foliations on $N$ called the ``null foliation''. In this case, we 
+    have an explictly description of the vector fields subordinated to $D$: $\Gamma(D)=\langle X_H \rangle$. 
+    In fact, if $Y\in \fr{X}(N)=\Gamma(\Ker(dH))$, then 
+    \begin{equation}
+        \omega(X_H,Y)=dH(Y)=0\Rightarrow X_H\in\Gamma(TN^\omega).
+    \end{equation}
+
+    Now, for a concrete example, let $H:\bbR^{2n}\to\bbR$ be defined by $H(q,p)=\frac12\sum_i(q_i^2+p_i^2)$ and $c=\frac12$. 
+    So we get $\mathbb{S}^{2n-1}=H^{-1}(c)$, which is a coisotropic submanifold which has an induced set of foliations. 
+    Locally, these foliations are integral curves of 
+    \begin{equation}
+        X_H=\sum_i(\frac{\partial H}{\partial p_i}\frac{\partial}{\partial q_i}
+        -\frac{\partial H}{\partial q_i}\frac{\partial}{\partial p_i})
+        =\sum_i(p_i \frac{\partial}{\partial q_i}  - q_i\frac{\partial}{\partial p_i}).
+    \end{equation}
+    Therefore, to find the leafs, we solve the ODE
+    \begin{equation}
+        X_H\circ\gamma(t)=\gamma^\prime(t)=\sum_i(q_i\circ\gamma)^\prime(t)\frac{\partial}{\partial q_i}+
+        \sum_i(p_i\circ\gamma)^\prime(t)\frac{\partial}{\partial p_i} \quad \bigg|_{\gamma(t)}
+    \end{equation}
+    which give us the set of equations
+    \begin{equation}
+        \left\{\begin{aligned}
+            &(q_i\circ\gamma)^\prime(t)=p_i\circ\gamma(t)\\
+            &(p_i\circ \gamma)^\prime(t)=-q_i\circ\gamma(t)
+        \end{aligned}\right.
+    \end{equation}
+    Define $z_j(t)=q_j(t)+ip_j(t)$. Then the above set is equivalent to $z_j^\prime(t)=-iz_j(t)$ whose solution is 
+    $z_j(t)=e^{-it}z_j(0)$. So if an integral curve of $X_H$ start at $p\in\mathbb{S}^{2n-1}$, then all elements 
+    $\lambda\cdot p,\;\lambda\in\mathbb{S}^1$ are on the same leaf. In particular, we see that the induced leafspace is 
+    \begin{equation}
+        B = \frac{\mathbb{S}^{2n-1}}{\mathbb{S}^1}\cong\bbC P^{n-1}
+    \end{equation}
+    which is a smooth manifold. By the previous discussion on symplectic reduction, we 
+    conclude that $\bbC P^{n-1}$ is a symplectic manifold.
+\end{example}
+
+\section{Smooth actions of Lie groups on symplectic manifolds}
+\subsection{Review on Lie groups and infinitesimal actions}
+\begin{itemize}
+    \item Let $F:M\rightarrow N$ be a diffeomorphism and $X\in\fr{X}(M)$. We define the pushforward 
+    $F_*X\in\fr{X}(N)$ to be vector field defined by the equation $F_*X |_{F(p)}=F_*X_p$. It's a general fact that 
+    if $X,Y\in\fr{X}(M)$, then $F_*[X,Y]=[F_*X,F_*Y]$.\par 
+    Moreover, if $X\in\fr{X}(M)$ and $Y\in\fr{X}(N)$, we say that $X$ and $Y$ are $F-$related (and we will write 
+    $X\sim_FY$) if $F_*X=Y$.
+    \item Let $G$ be a Lie group. Define $\fr{X}_{\text{inv}}(G)=\{X\in\fr{X}(G):\ell_{g*}X=X\}$ to be the set of 
+    left invariant vector fields of $G$. Then, it's clear that 
+    $[\fr{X}_{\text{inv}}(G),\fr{X}_{\text{inv}}(G)]\subset \fr{X}_{\text{inv}}(G)$, so $\fr{X}_{\text{inv}}(G)$ is a 
+    Lie algebra. We have an isomorphism 
+    \begin{equation}
+        \fr{g}\overset{\cong}{\to}\fr{X}_{\text{inv}}(G)=T_eG: X\mapsto [g\mapsto \ell_{g,*e}X]
+    \end{equation}
+    As a matter of notation, we will write $u^L$ for the left invariant vector field generated by $u\in\fr{g}$, i.e.,
+    $u^L(g)=\ell_{g,*}u$.
+    \item A $G$- manifold $M$ is a triple $(M,G,\psi)$ where $G$ is a Lie group and 
+    $\psi:G\times M\to M$ is a smooth map such that $\psi_g=\psi(g,\cdot)$ defines a homomorphism 
+    $G\to\text{Diff}(M):g\mapsto \psi_g$. An infinitesimal generator of $\psi$ is a vector field defined by 
+    \begin{equation}
+        u_M(x)=\frac{d}{dt}\bigg|_{t=0}\psi_{\exp(tu)}(X).
+    \end{equation}
+    This defines a map $\fr{g}\to\fr{X}(M):u\mapsto u_M$ which we will show to be a Lie algebra anti-homomorphism.
+    \begin{example}
+        (infinitesimal generator of $\Ad$). Consider the adjoint action $G\times\fr{g}\to\fr{g}$. We have 
+        \begin{equation}
+            \begin{split}
+                u_{\fr{g}}(v)&=\frac{d}{dt}\bigg|_{t=0}\Ad_{\exp(tu)}(v)\\
+                &=\frac{d}{dt}\bigg|_{t=0}(r_{\exp(-tu)}\circ \ell_{\exp(tu)})_{*,e}(v)\\
+                &=\frac{d}{dt}\bigg|_{t=0}d_{\exp(tu)}r_{\exp(-tu)}(v^L(\exp(tu)))\\
+                &=\frac{d}{dt}\bigg|_{t=0} r_{\exp(tu)*}(v^L)\big|_e\\
+                &=\mathcal{L}_{u^L}(v^L)\big|_e\\
+                &=[u^L,v^L]_e\\
+                &=[u,v].
+            \end{split}
+        \end{equation}
+        Therefore $\Ad_{*,e}=\ad$.
+    \end{example}
+    \item We have three important results that we will need: 
+        \begin{itemize}
+            \item[1.] Let $\varphi:M_1\to M_2$ be a $G$ equivariant map, i.e., $\varphi(gx)=g\varphi(x),\;\forall x\in M_1$, then 
+            for any $u\in\fr{g}$, we have $u_{M_1}\sim_\varphi u_{M_2}$.
+            \item[2.] Let $M$ be a $G$-manifold, then $\fr{g}\to\fr{X}(M):u\mapsto u_M$ is a Lie algebra anti-homomorphism. 
+            In fact, the result is true for $(G,\psi(g,\cdot)=r_{g^{-1}})$. This follows frmo the equation 
+            \begin{equation}
+                u_G(g)=\frac{d}{dt}\bigg|_{t=0}r_{\exp(-tu)}(g)=-u^L(g).
+            \end{equation}
+            Remember that $r_{\exp(tu)}$ defines the flux of the left invariant vector field $u^L$. Now, we observe that 
+            the result is also true for $\overline{M}=G\times M$ with action $g\cdot(a,x)=(r_{g^{-1}}(a),x)$. In fact 
+            \begin{equation}
+                \begin{split}
+                    \pi_{G*(a,x)}u_{\overline{M}}(a,x)&=\frac{d}{dt}\bigg|_{t=0}\pi_G\circ(r_{\exp(-tu)}(a),x)\\
+                    &=\frac{d}{dt}\bigg|_{t=0}r_{\exp(-tu)}(a)\\
+                    &=-u^L(a).
+                \end{split}
+            \end{equation}
+            Therefore
+            \begin{equation}
+                [u_{\overline{M}},v_{\overline{M}}]=
+                -([u^L,v^L],0)=
+                -([u^L,v^L],0)=
+                -[u,v]_{\overline{M}}.
+            \end{equation}
+            Now define the $G$-equivariant map $F:\overline{M}\to M:(a,x)\mapsto a^{-1}x$. By applying $F_*$ to the previous 
+            equation we get $[u_M,v_M]=-[u,v]_M$.
+            \item[3.] We have $g_*(u_M)=\Ad_g(u)_M$. This is true in $\overline{M}=G\times M$. In fact, we have 
+            \begin{equation}
+                \begin{split}
+                    \pi_G*(a,x)g_{*,(a,x)}u_{\overline{M}}(a,x)
+                    &=(\pi_G\circ\psi_g)_{*,(a,x)}u_{\overline{M}}(a,x)\\
+                    &=\frac{d}{dt}\bigg|_{t=0}\pi_G\circ\psi_g\circ(r_{\exp(-tu)}(a),x)\\
+                    &=\frac{d}{dt}\bigg|_{t=0}\pi_G(r_{g^{-1}}r_{\exp(-tu)}(a),x)\\
+                    &=\frac{d}{dt}\bigg|_{t=0}a\exp(-tu)g^{-1}\\
+                    &=\frac{d}{dt}\bigg|_{t=0}ag^{-1}c_g(\exp(-tu))\\
+                    &=\frac{d}{dt}\bigg|_{t=0}ag^{-1}\exp(-\Ad_g(u))\\
+                    &=\frac{d}{dt}\bigg|_{t=0}r_{\exp(-\Ad_g(u))}(ag^{-1})\\
+                    &=-(\Ad_g(u))^L(ag^{-1}).
+                \end{split}
+            \end{equation}
+            Finally 
+            \begin{equation}
+                \begin{split}
+                    g_*u_{\overline{M}}\big|_{g\cdot(a,x)}&=-(\Ad_g(u)^L(ag^{-1}),0)\\
+                    &=-(\Ad_g(u)^L,0)\big|_{g\cdot(a,x)}.
+                \end{split}
+            \end{equation}
+        \end{itemize}
+        Now we have 
+        \begin{equation}
+            g_*u_M=g_*F_*u_{\overline{M}}=F_*g_*u_{\overline{M}}=F_*(\Ad_g(u))_{\overline{M}}=(\Ad_g(u))_M.
+        \end{equation}
+        \item Let $(M,G,\psi)$ be a $G$-manifold. For $x\in M$, we define the isotropy subgroup 
+        $G_x=\{g\in G:gx=x\}$. It's clear that $G_x\subset G$ is closed, so it's a Lie subgroup of $G$. Define 
+        $\fr{g}_x=\{u\in\fr{g}:u_M(x)=0\}$, we claim that  
+        \begin{equation}
+            \text{Lie}(G_x)=\fr{g}_x.
+        \end{equation}
+        Let $\exp(tu)\in G_x,\;\forall t\in\bbR$, that is, assume that $u\in\text{Lie}(G_x)$. Then, by definition, we have 
+        $\exp(tu)x=x$. So, by differentiating this equation we get $u_M(x)=0$ and $u\in\fr{g}_x$. Conversely, assume that 
+        $u\in\fr{g}_x$. Let $g=\exp(ts),\;s\in\bbR$, then 
+        \begin{equation}
+            \frac{d}{dt}\bigg|_{t=s}\exp(tu)x= g_{*,x}(\frac{d}{dt}\bigg|_{t=0}\exp(tu)x)=0
+        \end{equation}
+        and $\exp(tu)\cdot x = x,\forall t\in\bbR$. Therefore $u\in\text{Lie}(G_x)$.
+        \item Now, if $\mathcal{O}_x=Gx$, it's a fact that if we identify $G/G_x\cong \mathcal{O}_x$ by the 
+        orbit stabilizer theoerem, then $\mathcal{O}_x$ inherits a differentiable structure such that the inclusion 
+        $i:\mathcal{O}_x\hookrightarrow M$ is an imersion. In this context we claim that 
+        \begin{equation}
+            i_{*,x}T_x\mathcal{O}_x=\{u_M(x): u\in\fr{g}\}.
+        \end{equation}
+        Lets prove it. We know that $i:G/G_x\hookrightarrow M:[g]\mapsto gx$ is an imersion. First observe that 
+        \begin{equation}
+            \begin{split}
+                \frac{d}{dt}\bigg|_{t=0}i\circ\pi\circ r_{\exp(tu)}(g)&=\frac{d}{dt}\bigg|_{t=0}g\exp(tu)\cdot x\\
+                &=g_{*,x}u_M(x)\\
+                &=(\Ad_g(u))_M(gx).
+            \end{split}
+        \end{equation}
+        Since $\pi:G\rightarrow G/G_x$ is a submersion, we conclude that 
+        $i_{*,[g]}T_{[g]}(G/G_x)\subset \{u_M(g\cdot x):u\in\fr{g}\}$. Now define the map 
+        \begin{equation}
+            \fr{g}\to \{u_M(g\cdot x):u\in\fr{g}\}
+        \end{equation}
+        which has kernel equal to $\text{Lie}(G_{g\cdot x})$. Therefore we have an isomorphism
+        \begin{equation}
+            \fr{g}/\text{Lie}(G_{g\cdot x})\overset{\cong}{\to}\{u_M(g\cdot x):u\in\fr{g}\}.
+        \end{equation}
+        Therefore the dimension of the last subspace is equal to 
+        \begin{equation}
+            \begin{split}
+                \dim(G)-\dim(G_{g\cdot x})&=\dim(G)-\dim(gG_xg^{-1})\\
+                &=\dim(G)-\dim(G_x)\\
+                &=\dim(G/G_x).
+            \end{split}
+        \end{equation}
+        Therefore, by dimensional reasons we have $i_{*,[g]}T_{[g]}(G/G_x)=\{u_M(g\cdot x):u\in\fr{g}\}$ and since 
+        $i_*$ is injective we can identify $T_x{\mathcal{O}_x}=\{u_M(x):u\in\fr{g}\}$.
+\end{itemize}
+
+\subsection{Co-adjoint orbits and KKS form}
+
+    Let $G$ be a Lie group. We will show that the orbits on $\fr{g}^*$ under the co-adjoint action have a natural
+    structure of a symplectic manifold.\par
+    \textbf{KKS}: Let $\xi\in\mathcal{O}$, we define $\omega\in\bigwedge^2T_\xi^*\mathcal{O}$ by the formula: 
+    \begin{equation}
+        \omega_\xi(u_{\fr{g}^*}(\xi),v_{\fr{g}^*}(\xi))=\langle\xi,[u,v] \rangle.
+    \end{equation}
+    We need to verify a few things:
+\begin{itemize}
+    \item $\omega_\xi$ is well defined. Assume that $u_{\fr{g}^*}(\xi)=u_{\fr{g}^*}^\prime(\xi)$ and 
+    $v_{\fr{g}^*}(\xi)=v_{\fr{g}^*}^\prime(\xi)$, then 
+    \begin{equation}
+        \begin{split}
+            \omega_\xi(u_{\fr{g}^*}^\prime(\xi),v_{\fr{g}^*}^\prime(\xi))&=
+            -u_{\fr{g}^*}^\prime(\xi)(v^\prime)\\
+            &=-u_{\fr{g}^*}(\xi)(\xi)(v^\prime)\\
+            &=\langle \xi,[u,v^\prime] \rangle\\
+            &=v_{\fr{g}^*}^\prime(\xi)(u)\\
+            &=v_{\fr{g}^*}(\xi)(u)\\
+            &=\langle\xi,[u,v] \rangle.
+        \end{split}
+    \end{equation}
+    \item It's skew symmetric and nondegenerate (clear): $\langle\xi,[u,v] \rangle=0\;\forall v\iff u_{\fr{g}^*}(\xi)=0$.
+    \item It's $G-$invariant, so it's smooth. This can be verified directly by using the relation $g_*(u_{\fr{g}^*})=(\Ad_g(u))_{\fr{g}^*}$.
+    \item By the previous item we see that $\psi_{e^{tu}}^*\omega=\omega$. Therefore 
+    \begin{equation}
+        \mathcal{L}_{\fr{g}^*}\omega=0\iff (d\iota_{u_{\fr{g}^*}}+\iota_{u_{\fr{g}^*}}d)\omega=0.
+    \end{equation}
+    \textbf{Claim}: We have $\iota_{u_{\fr{g}^*}}\omega=du$ where we identify $u\in\fr{g}\cong C^\infty_{\text{Lin}}(\fr{g}^*)$.\par 
+    This can be seen directly by the equation:
+    \begin{equation}
+        \begin{split}
+            \iota_{u_{\fr{g}^*}}\omega\big|_\xi(v_{\fr{g}^*}(\xi))&=\langle\xi,[u,v] \rangle\\
+            &=\langle\xi,[u,v] \rangle\\
+            &=v_{\fr{g}^*}(\xi)(u)\\
+            &=du\big|_\xi v_{\fr{g}^*}(\xi)\;(\text{by the identification }\fr{g}^{**}=\fr{g})
+        \end{split}
+    \end{equation}
+    \item For $G=SO(3)$ the co-adjoint and adjoint orbits are the same. We have an isomorphism of Lie algebras
+    $\bbR^3\cong\fr{so}(3)$ which maps $e_i\in\bbR^3$ to the associated matrix representation of the map 
+    $(e_i)_\times:v\mapsto e_i\times v$. Moreover, we have the identity 
+    \begin{equation}
+        A(u\times v)= Au\times Av,\; \forall A\in SO(3).
+    \end{equation}
+    With this equation we get $(Au)_\times v = Au\times v = Au_\times A^{-1}(v)=\Ad_A(u_\times)v$. So this isomorphism 
+    is $SO(3)-$equivariant, with the adjoint orbits being spheres in $\bbR^3$.
+    \begin{dang}
+     \begin{remark}
+        If $\nu: \fr{g}\to \fr{g}^*$ is an isomorphism that intetwine the adjoint and co-adjoint actions of $G$. Then we 
+        can induce a symplectic form on adjoint orbits using KKS. The formula is the one 
+        \begin{equation}
+            \omega_\xi(u_{\fr{g}}(\xi),v_{\fr{g}}(\xi))=\langle \nu(\xi), [u,v]\rangle.
+        \end{equation}
+    \end{remark}    
+    \end{dang}
+
+    Going back to definitions: If $\xi\in(\bbR^3)^*$, we have 
+    \begin{equation}
+        \begin{split}
+            \omega_\xi(u_{\fr{g}}(\xi),v_{\fr{g}}(\xi))&=\langle\xi,[u,v]\rangle\\
+        &=\langle \xi, u\times v\rangle \;(\bbR^3\text{ is a Lie algebra with the croos product})\\
+        &=\xi\cdot (u\times v)\;(\text{By the isomorphism }\bbR^3\cong(\bbR^3)^*)
+        \end{split}
+    \end{equation}
+    \begin{dang}
+    \begin{remark}
+        Let $S\subset M$ a hypersurface, $M$ oriented with orientation form $\omega$. Let 
+        $N\in\fr{X}(M)$ be a vector field nowhere tangent to $S$, then $\iota_N\omega|_S$ is an orientation 
+        form for $S$.
+    \end{remark}        
+    \end{dang}
+
+    By the previous remark we can use the vector field 
+    $N= x\tfrac{\partial}{\partial x}+y\tfrac{\partial}{\partial y}+z\tfrac{\partial}{\partial z}$ to induce 
+    an orientation form 
+    \begin{equation}
+        \sigma = xdy\wedge dz - ydx\wedge dz+zdx\wedge dy \big|_{\mathbb{S}^2}
+    \end{equation}
+    on the spheres. In fact, if $f:(x,y,z)\mapsto x^2+y^2+z^2-1$, then $df(N)=2(x^2+y^2+z^2)$ is never zero on $\mathbb{S}^2$, so 
+    $N$ is nowhere tangent to $\mathbb{S}^2$.\par 
+
+    \begin{dang}
+        \begin{remark}
+            If $f:\bbR^n\to\bbR$ is smooth with regular value $c$, then $S=f^{-1}(0)$ is a regular submanifold 
+            with tangent spaces 
+            \begin{equation}
+                i_{*p}T_pS \cong \nabla f(p)^\perp
+            \end{equation}
+        \end{remark}
+    \end{dang}
+
+    In our case we have $\nabla f(\xi) = \xi$, so $T_\xi\mathbb{S}^2=\xi^\perp=\{\xi\times u:u\in\bbR^3\}$. If we 
+    use the area form 
+    \begin{equation}
+        \begin{split}
+            \sigma_\xi(\xi\times u,\xi\times v) &=\xi\cdot ((\xi\times u)\times (\xi\times v))\;(\text{use the area form})\\
+            &=-(\xi\times u)\cdot (\xi\times(\xi\times v))\\
+            &=-(\xi\times u)\cdot (\xi(\xi\cdot v)-v(\xi\cdot\xi))\\
+            &=\|\xi\| (\xi\times u)\cdot v \\
+            &=\xi\cdot (u\times v)\|\xi\|.
+        \end{split}
+    \end{equation}
+
+    In conclusion, we see the relation between the KKS and the area form:
+    \begin{equation}
+        \omega_{\text{kks}}=\frac{1}{r}\sigma
+    \end{equation}
+    where $r=\|\xi\|$ is the radius of the sphere.
+\end{itemize}
+
+\subsection{Hamiltonian actions}
+Let $X\in T_0\bbR^n\cong \bbR^n$, then $\widetilde{X}(g)=(g,X)$. In fact
+\begin{equation}
+    \begin{split}
+         \ell_{g*,0}(\frac{\partial}{\partial x_i}\bigg|_g)x_j &= \frac{\partial}{\partial x_i}\bigg|_g x_j\circ \ell_g\\
+         &=\frac{\partial}{\partial x_i}\bigg|_g(x_j+x_j(g))=\delta_{ij}.
+    \end{split}
+\end{equation}
+
+In general if $\widetilde{X}\in\fr{X}_{\text{inv}}(G)$, then we set $\exp(X)=\gamma_1^{\widetilde{X}}(e)$. If $G=\bbR^n$, then 
+$\gamma_t^{\widetilde{X}}(0)=tX$ and $e^X=X$.
+
+
+    Let $(M,\omega)$ be a symplectic manifold. Then
+
+    \begin{itemize}
+        \item $G-$action is symplectic if $\mathcal{L}_X\omega = 0$. This condition is equivalent to 
+        $\psi_g^*\omega=\omega\;\forall g\in G$ if $G$ is connected.
+        \item $G-$action is Hamiltonian if there exist a linear map $\hat{\mu}:\fr{g}\to C^\infty(M)$
+        such that the following diagram commutes: 
+        \begin{center}
+            \begin{tikzcd}
+                                             &   & C^\infty(M)\arrow[dd, dashed]& \hat{\mu}(u)\arrow[dd, mapsto] \\
+    \fr{g}\arrow[rru, "\hat{\mu}"]\arrow[rrd]&u\arrow[rru, mapsto]\arrow[rrd, mapsto]  &    &\\
+                                             &   & \fr{X}(M)   &u_M = X_{\hat{\mu(u)}}
+            \end{tikzcd}
+        \end{center}
+    \end{itemize}
+
+    \begin{remark}
+        We have a bijection 
+        \begin{equation}
+            \{\hat{\mu}: \fr{g}\to C^\infty(M)\} \leftrightarrow \{\mu:M\to\fr{g}^*\}
+        \end{equation}
+    \end{remark}
+
+\begin{itemize}
+    \item The action is weakly Hamiltonian if
+    \begin{equation}
+        u_M = X_{\hat{\mu}(u)} \iff \iota_{u_M}\omega = d\hat{\mu} = d\langle\mu,u\rangle.
+    \end{equation}
+    \item The action is Hamiltonian if, in addition, we have 
+    \begin{equation}
+        \mu \circ \psi_g = \Ad_g^*\circ\mu \overset{G\text{ connected}}{\iff} \hat{\mu}([u,v])=\{\hat{\mu}(u),\hat{\mu}(v)\}.
+    \end{equation}
+    The relation between the two definitions is $\hat{\mu}(u)\big|_x = \langle\mu(x),u\rangle$.
+\end{itemize}
+
+Now, look at the following equation for $x\in M, v\in \fr{g}$:
+\begin{equation}
+    \langle \mu\circ\psi_g(x),v\rangle = \langle\Ad_g^*\circ\mu(x),v\rangle = \langle \mu(x), \Ad_{g^{-1}}(v)\rangle.
+\end{equation}
+This equation means that $\hat{\mu}(v)\circ\psi_g(x)=\hat{\mu}(\Ad_{g^{-1}}(v))\big|_x$. If we put $g=e^{tu},u\in\fr{g}$ and 
+differentiate this equation, we get $\hat{\mu}([u,v])=\{\hat{\mu}(u),\hat{\mu}(v)\}$. For the converse we need the hypothesis 
+of $G$ being connected.\par 
+
+\begin{remark}
+    Remember that $\fr{X}_{\text{Ham}}(M)\subset\fr{X}_{\text{Sym}}(M)$. 
+\end{remark}
+
+In our case we have $\mathcal{L}_{u_M}\omega = 0$. Since $u_M$ has flux given by $\psi_{e^{tu}}$, we get 
+$\psi_{e^{tu}}^*\omega=\omega$. Therefore $\psi_g^*\omega = \omega,\;\forall g\in G^\circ$.
+    
+\begin{dang}
+    \begin{theorem}
+        (Noether principle). Let $(M,\omega,\mu)$ be a Hamiltonian $G$-space and $H\in C^\infty(M)$. Then 
+        $H$ is $G$-invariant if and only if $\mu$ is preserved by the Hamiltonian flux of $H$.
+    \end{theorem}
+\end{dang}
+Proof: Remember that $H$ is $G$ invariant if $\psi_g^*H=H\iff\mathcal{L}_{u_M}H=0$ if $G$ is connected. Also, 
+$\mu$ is preserved by the Hamiltonian flux of $H$ if $\varphi_t^*\mu=\mu$ where $\varphi_t=\varphi_t^{X_H}$ is the 
+flux of $X_H$. This equation is true if 
+\begin{equation}
+    \begin{split}
+        \mathcal{L}_{X_H}\langle\mu,u\rangle &= \frac{d}{dt}\bigg|_{t=0}\varphi_t^*\langle\mu,u\rangle\\
+           &=\frac{d}{dt}\bigg|_{t=0}\langle\varphi_t^*\mu,u\rangle=0\;\forall u\in\fr{g}\\
+           &\iff \varphi_t^*\mu =\mu,\;\forall t\in\bbR.
+    \end{split}
+\end{equation}
+But we see that 
+\begin{equation}
+    \begin{split}
+        \mathcal{L}_{X_H}\langle\mu,u\rangle &= (d\iota_{X_H}+\iota_{X_H}d)\langle\mu,u\rangle\\
+        &=\iota_{X_H}d\langle\mu,u\rangle\\
+        &=\iota_{X_H}\iota_{u_M}\omega\\
+        &=-dH(u_M)\\
+        &=-\mathcal{L}_{u_M}H.
+    \end{split}
+\end{equation}
+\qed
+
+\begin{example}
+    A general situation: $(M,\omega)$ is symplectic with $\omega = -d\theta$ exact. Suppose that we have 
+    a $G$ on $M$ such that $\psi_g^*\omega = \omega$. In this case we define 
+    \begin{equation}
+        \iota_{u_M}\theta =  \langle \mu,u\rangle.
+    \end{equation}
+    It's easy to see that this defines a Hamiltonian action in $M$.
+\end{example}
+
+\begin{example}
+    (Cotangent lifting). Take a $G$-action $\psi_g$ on $M$, then we can lift 
+    it to a $G$-action $\widehat{\psi}_g$ on $T^*M$. So we have $\widehat{\psi}_g^*\alpha=\alpha$ and thus we get 
+    a Hamiltonian map given by $\langle\mu,u\rangle = \iota_{u_M}\alpha$. 
+\end{example}
+
+\begin{example}
+    Let $G=\bbR^n$ acting on $M=\bbR^n$ by translation $g\cdot q = q+g$. With the identification 
+    $T^*M\cong\bbR^n\times\bbR^n$ we have $g\cdot(q,p)=(g+q,p)$. We can explictly compute the moment map:
+    \begin{equation}
+        \begin{aligned}
+            &u = (a,b) \mapsto u_M = \sum_ia_i\frac{\partial}{\partial q_i}+\sum_ib_i\frac{\partial}{\partial p_i}\\
+            &\iota_{u_M}\sum_ip_idq_i=\sum_ip_idq_i(u_M)=\sum_ip_ia_i\\
+            &\mu(q,p):\bbR^n\to\bbR^n:e_i\mapsto p_i 
+        \end{aligned}
+    \end{equation}
+    So $\mu(q,p)=p$ in the choosen basis.
+\end{example}
+
+\begin{example}
+    Let $G=SO(3)$ acting in $\bbR^3$ in the usual way a lift it to an action on $T^*\bbR^3=\bbR^3\times\bbR^3$. 
+    Now observe that 
+    \begin{equation}
+    \begin{split}
+    \psi_{g*,v}(\frac{\partial}{\partial x_i}\bigg|_v)x_j&=\frac{\partial}{\partial x_i}\bigg|_vx_j\circ \psi_g \\
+    &=d(x_j\circ \psi_g)_v(e_i)\\
+    &=x_j \circ\psi_g(e_i)\\
+    &=g_{ji}
+    \end{split}
+    \end{equation}
+    This proves that $\psi_{g*,v}(\sum_ia_i\frac{\partial}{\partial x_i}\bigg|_v)
+    =\sum_i(ga)_i\frac{\partial}{\partial x_i}\bigg|_{gv}$. Therefore, the corresponding action on $T\bbR^3$ is 
+    \begin{equation}
+        g\cdot(q,p)=(gq,gp).
+    \end{equation}
+    Remember that the inverse of the dualization preserve base points and inverse the dual map, so the action on 
+    $T^*\bbR^3$ is 
+    \begin{equation}
+        g\cdot (q,p)=(gq,(g^{-1})^Tp)=(gq,gp),\;g\in SO(3).
+    \end{equation}
+    Finnaly we see that 
+    \begin{equation}
+        \begin{aligned}
+            &u_M(q,p)=\frac{d}{dt}\bigg|_{t=0}(e^{tu}q,e^{tu}p)=(uq,up)\\
+            &u_M = \sum_i (uq)_i\frac{\partial}{\partial q_i}+\sum_i (up)_i\frac{\partial}{\partial p_i}\\
+            &\iota_{u_M}\sum_ip_idq_i = \sum_i p_iu_{ij}q_j\\
+            &\mu(q,p):\fr{so}(3)\to \bbR: \ell_1\mapsto p_3q_2-p_2q_3,\dots\Rightarrow \mu(q,p)=q\times p
+        \end{aligned}
+    \end{equation}
+\end{example}
+\subsection{Marsden, Weinstein, Meyer theorem}
