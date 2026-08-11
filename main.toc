@@ -1,7 +1,46 @@
-\contentsline {chapter}{\numberline {1}Kac - Moody algebras and its representations}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Kac - Moody algebras}{2}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Main definitions}{2}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Invariant bilinear form}{6}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Weyl group of a Kac - Moody algebra}{7}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Affine Lie algebras}{11}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}The Kac character formula}{19}{subsection.1.1.5}%
+\contentsline {chapter}{\numberline {1}Lie Algebras}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Facts from linear algebra}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Jordan Normal form}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Jordan Chevalley decomposition}{5}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Engel and Lie theorems}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Semisimplicity criterions}{9}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Cartan subalgebra and weight space decomposition}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Generalized eigenspaces vs generalized weight spaces}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Spectral decomposition for nilpotent subalgebras}{18}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Regular elements of a Lie algebra}{19}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Existence of Cartan subalgebras}{21}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}Structural theory of semisimple Lie algebras}{23}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Triangular decomposition of semisimple Lie algebras}{23}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Maximal toral subalgebras in semisimple Lie algebras}{26}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Another definition of Rank of a Lie algebra}{28}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Representations of $\mathfrak {sl}_2\mathbb {C}$}{29}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Root systems}{32}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Simple Lie algebras}{40}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Irreducible root systems}{40}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Root systems of simple Lie algebras}{42}{subsection.1.8.2}%
+\contentsline {subsubsection}{Family $A_n$:}{43}{section*.2}%
+\contentsline {subsubsection}{Family $C_n$:}{44}{section*.3}%
+\contentsline {subsubsection}{Family $D_n$:}{46}{section*.4}%
+\contentsline {subsection}{\numberline {1.8.3}Cartan matrices and Dynkin diagrams}{50}{subsection.1.8.3}%
+\contentsline {section}{\numberline {1.9}Cohomology}{57}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Nilpotent orbits}{66}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Adjoint and coadjoint orbits}{66}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Review on Lie groups and infinitesimal actions}{66}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Co-adjoint orbits and KKS form}{69}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Hamiltonian actions}{72}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Marsden, Weinstein, Meyer theorem}{75}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Lazy and sophisticated approach for coadjoint orbits}{75}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Standard triples}{77}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}Jacobson-Morozov theorem}{77}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Conjugation theorems}{79}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Weighted Dynkin diagrams}{83}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Regular, subregular and minimal orbits}{88}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Standard slices}{88}{section.2.6}%
+\contentsline {section}{\numberline {2.7}An isomorphism of Weyl groups}{91}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Kac - Moody algebras and its representations}{95}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Kac - Moody algebras}{95}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Main definitions}{95}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Invariant bilinear form}{99}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Weyl group of a Kac - Moody algebra}{100}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Affine Lie algebras}{104}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}The Kac character formula}{112}{subsection.3.1.5}%

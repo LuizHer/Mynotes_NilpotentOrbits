@@ -417,6 +417,12 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr10.
 INPUT .\main.aux
 INPUT .\main.aux
 INPUT main.aux
+INPUT .\chapters\Lie algebras.aux
+INPUT .\chapters\Lie algebras.aux
+INPUT chapters\Lie algebras.aux
+INPUT .\chapters\Nilpotent orbits.aux
+INPUT .\chapters\Nilpotent orbits.aux
+INPUT chapters\Nilpotent orbits.aux
 INPUT .\chapters\Kac_Moody_Algebras.aux
 INPUT .\chapters\Kac_Moody_Algebras.aux
 INPUT chapters\Kac_Moody_Algebras.aux
@@ -503,13 +509,20 @@ INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 OUTPUT main.toc
-INPUT .\chapters\Kac_Moody_Algebras.tex
-INPUT .\chapters\Kac_Moody_Algebras.tex
-OUTPUT chapters\Kac_Moody_Algebras.aux
-INPUT .\chapters\Kac_Moody_Algebras.tex
-INPUT .\chapters\Kac_Moody_Algebras.tex
-INPUT chapters\Kac_Moody_Algebras.tex
+INPUT .\chapters\Lie algebras.tex
+INPUT .\chapters\Lie algebras.tex
+OUTPUT chapters\Lie algebras.aux
+INPUT .\chapters\Lie algebras.tex
+INPUT .\chapters\Lie algebras.tex
+INPUT chapters\Lie algebras.tex
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr17.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr12.tfm
@@ -519,27 +532,83 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\ueuf.fd
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm7.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
-INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\doublestroke\udsrom.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\doublestroke\udsrom.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\tex\latex\doublestroke\udsrom.fd
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom10.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom8.tfm
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom8.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr12.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm7.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom12.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom10.tfm
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\doublestroke\dsrom8.tfm
+INPUT C:\Users\herin\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\herin\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\herin\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs7.tfm
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\rank2rootsystems.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\dynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\extendedDynkinDiagrams.png
+INPUT .\chapters\Nilpotent orbits.tex
+INPUT .\chapters\Nilpotent orbits.tex
+OUTPUT chapters\Nilpotent orbits.aux
+INPUT .\chapters\Nilpotent orbits.tex
+INPUT .\chapters\Nilpotent orbits.tex
+INPUT chapters\Nilpotent orbits.tex
+INPUT .\chapters\Kac_Moody_Algebras.tex
+INPUT .\chapters\Kac_Moody_Algebras.tex
+OUTPUT chapters\Kac_Moody_Algebras.aux
+INPUT .\chapters\Kac_Moody_Algebras.tex
+INPUT .\chapters\Kac_Moody_Algebras.tex
+INPUT chapters\Kac_Moody_Algebras.tex
 INPUT main.aux
+INPUT .\chapters\Lie algebras.aux
+INPUT .\chapters\Lie algebras.aux
+INPUT chapters\Lie algebras.aux
+INPUT .\chapters\Nilpotent orbits.aux
+INPUT .\chapters\Nilpotent orbits.aux
+INPUT chapters\Nilpotent orbits.aux
 INPUT .\chapters\Kac_Moody_Algebras.aux
 INPUT .\chapters\Kac_Moody_Algebras.aux
 INPUT chapters\Kac_Moody_Algebras.aux
@@ -549,8 +618,12 @@ INPUT main.run.xml
 OUTPUT main.run.xml
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\doublestroke\dsrom10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\doublestroke\dsrom10.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\doublestroke\dsrom8.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\doublestroke\dsrom8.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eufm10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eufm10.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eufm7.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eufm7.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
@@ -585,3 +658,5 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\s
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm7.pfb
+INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm7.pfb
