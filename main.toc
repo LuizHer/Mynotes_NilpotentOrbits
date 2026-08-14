@@ -44,3 +44,4 @@
 \contentsline {subsection}{\numberline {3.1.3}Weyl group of a Kac - Moody algebra}{100}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Affine Lie algebras}{104}{subsection.3.1.4}%
 \contentsline {subsection}{\numberline {3.1.5}The Kac character formula}{112}{subsection.3.1.5}%
+\contentsline {chapter}{\numberline {4}Springer correspondence}{118}{chapter.4}%
