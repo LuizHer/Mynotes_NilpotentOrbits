@@ -1,2 +1,106 @@
 \chapter{Springer correspondence}
-I am following the third chapter of~\cite{chriss1997representation}
+I am following the third chapter of~\cite{chriss1997representation}. 
+\section{Springer Fibers}
+\subsection{Variety of Borel subalgebras}
+As usual, $\fr{g}$ is a finite dimensional complex semisimple Lie algebra and $G$ its associated compact 
+Lie group.
+\begin{itemize}
+    \item(Variety of Borel subalgebras). Let $\fr{b}\subset \fr{g}$ be a Borel subalgebra, i.e., a maximal 
+    solvable subalgebra of $\fr{g}$. We have a bijection
+    \begin{equation}\label{equation : Ad action of G on mathcalB}
+        G/B \to \mathcal{B}: gB \mapsto \Ad_g(\fr{b})
+    \end{equation} 
+    where $B=\text{Stab}_G(\fr{b})$ through the adjoint action. In fact, $B$ is just the compact form of $\fr{b}$, that is 
+    $\text{Lie}(B)=\fr{b}$.
+    \item(Bruhat decomposition). Now write $\fr{b}_0=\text{Lie}(B)$. 
+    By equation~(\ref{equation : Ad action of G on mathcalB}), we see that there exsit an unique 
+    $gB$ such that $\Ad_g(\fr{b}_0)=\fr{b}$, so $\Ad_B(\fr{b})=\Ad_{BgB}(\fr{b}_0)$. This gives a surjection:
+    \begin{equation}\label{equation : first map}
+        B\backslash G/B \rightarrow\{B-\text{orbits on }\mathcal{B}\}:BgB\mapsto \Ad_{BgB}(\fr{b}_0).
+    \end{equation} 
+    \begin{remark}
+        If $G$ is a group and $H$ is a subgroup, then we have a bijection
+        \begin{equation}\label{equation : second map}
+            \phi:\{H-\text{orbits on }G/H\}\overset{\cong_{\text{set}}}{\rightarrow}
+            \left\{\begin{matrix}G-\text{diagonal orbits }\\\text{on }G/H\times G/H\end{matrix}\right\}:
+            [gH]\mapsto [(gH,H)]
+        \end{equation}
+    \end{remark}
+    Furthermore, we have the Bruhat decomposition, which states that 
+    \begin{equation}\label{equation : Bruhat decomposition}
+        W \rightarrow B\backslash G/B: w \mapsto BwB
+    \end{equation}
+    is a bijection. Here we are viweing $W_T$ in the sense of section~(\ref{section: isom of Weyl groups}).
+    \begin{example}
+        If $G=GL_n$, then $B=\begin{pmatrix}a&b\\0&d\end{pmatrix}$. Now, if $c\neq0$, then 
+        \begin{equation}
+          \begin{pmatrix}
+            a&b&1&0\\c&d&0&1
+          \end{pmatrix}\sim 
+          \begin{pmatrix}
+            c&d&0&b-dac^{-1}\\0&1&1&-ac^{-1}
+          \end{pmatrix}
+        \end{equation}
+        by row reduction. So 
+        \begin{equation}
+            \begin{split}
+                \begin{pmatrix}
+                    a&b\\c&d
+                \end{pmatrix} &=  \begin{pmatrix}
+                    0&1\\1&-ac^{-1}
+                \end{pmatrix}^{-1} \begin{pmatrix}
+                    c&d\\0&b-dac^{-1}
+                \end{pmatrix}\\
+                &= \begin{pmatrix}
+                    1&ac^{-1}\\0&1
+                \end{pmatrix}
+                 \begin{pmatrix}
+                    0&1\\1&0
+                \end{pmatrix}
+                 \begin{pmatrix}
+                    c&d\\0&b-dac^{-1}
+                \end{pmatrix}.
+            \end{split}
+        \end{equation}
+        So  
+        \begin{equation}
+            B \begin{pmatrix}
+                    a&b\\c&d
+                \end{pmatrix}B = BsB,\; s =  \begin{pmatrix}
+                    0&1\\1&0
+                \end{pmatrix}
+        \end{equation}
+        and $|B\backslash G/B|=2$.
+    \end{example}
+    \begin{theorem}
+        All of the above maps are bijections:
+        \begin{equation}
+            W \to B\backslash G/B\to \{B-\text{orbits on }\mathcal{B}\}\to
+              \left\{\begin{matrix}G-\text{diagonal orbits }\\\text{on }G/H\times G/H\end{matrix}\right\}
+        \end{equation}
+    \end{theorem}
+    \begin{remark}
+        Aparently, show that the composition of the first two maps 
+        \begin{equation}
+            W \to \{B-\text{orbits on }\mathcal{B}\}
+        \end{equation}
+        is a bijection, is highly nontrivial (see~\cite{chriss1997representation}).
+    \end{remark}
+\end{itemize}
+We want to describe the Variety of Borel subalgebras of $\fr{g}=\fr{sl}_n$. 
+\begin{dang}
+    \begin{lemma}
+    We have a bijection 
+\begin{equation}
+    \{(F_0,F_1,\dots, F_n):F_i\subset F_{i+1},\dim(F_i)=i\}\to\mathcal{B}:F\mapsto \fr{b}_F=\{x\in\fr{g}:x(F_i)\subset F_i\}.
+\end{equation}
+Here we have $F_i\subset \mathbb{C}^n$. 
+For $F = (F_0,F_1,\dots, F_n),g\in G$, we will write $gF=(gF_0,\dots, gF_n)$.
+\end{lemma}
+\end{dang}
+Proof: We need to show that $\fr{b}_F$ is a Borel subalgebra. We can choose $A\in GL_n$ such 
+that $A(\mathbb{C}^i)=F_i,\;\forall i$, where $\bbC^i = \langle e_1,\dots, e_i\rangle$. To see this, write 
+$F_i = \langle v_1,\dots, v_i\rangle,\;\forall i$. If $v_i = \sum_j a_{ji}e_j$, then $Ae_j=v_j$. 
+Therefore, we get $A(0,\bbC,\dots,\bbC^n)=F$, the standard flag. Observe that since $AxA^{-1}=(A/\det(A)^{1/n})x(A/\det(A)^{1/n})^{-1}$, we 
+can assume $A\in SL_n$. Of course $\fr{b}_{(0,\bbC,\dots,\bbC^n )}=\fr{b}_0$, the standard Borel subalgebra of upper triangular matrices. 
+So $\fr{b}=\Ad_A(\fr{b}_0)$ is a Borel subalgebra. Finally, sujectivity follows from Lie's theorem (Lie algebra course).\qed

@@ -45,3 +45,5 @@
 \contentsline {subsection}{\numberline {3.1.4}Affine Lie algebras}{104}{subsection.3.1.4}%
 \contentsline {subsection}{\numberline {3.1.5}The Kac character formula}{112}{subsection.3.1.5}%
 \contentsline {chapter}{\numberline {4}Springer correspondence}{118}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Springer Fibers}{118}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Variety of Borel subalgebras}{118}{subsection.4.1.1}%
